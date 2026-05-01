@@ -3,236 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Physical Risk Swaps. A Working Summary.</title>
+<title>Rumination &middot; Dee Yang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #fbfaf6;
-    --ink: #1a1a1a;
-    --muted: #5a5a5a;
-    --accent: #8a3324;
-    --rule: #d8d4c8;
-    --soft: #f3f0e8;
+    --color-bg: #f8f6f1;
+    --color-surface: #ffffff;
+    --color-accent: #1a6b5c;
+    --color-accent-light: #2a9d8a;
+    --color-text: #1c1c1a;
+    --color-text-muted: #6b7280;
+    --color-faint: #9ca3af;
+    --color-rule: rgba(0,0,0,0.07);
+    --color-rule-s: rgba(0,0,0,0.14);
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: "Iowan Old Style", "Charter", Georgia, serif;
-    font-size: 17px;
-    line-height: 1.55;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: "Barlow", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 60px 40px 80px;
-  }
-  .layout {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 56px;
-    align-items: start;
-  }
-  .sub-nav {
-    position: sticky;
-    top: 40px;
-    padding-top: 4px;
-  }
-  .sub-nav-label {
-    font-family: "Inter", -apple-system, sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 12px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--rule);
-  }
-  .sub-nav a {
-    display: block;
-    font-family: "Inter", -apple-system, sans-serif;
-    font-size: 13px;
-    color: var(--muted);
-    text-decoration: none;
-    padding: 7px 0 7px 12px;
-    border-left: 2px solid transparent;
-    margin-left: -14px;
-    line-height: 1.35;
-    transition: color 0.15s, border-color 0.15s;
-  }
-  .sub-nav a:hover { color: var(--ink); }
-  .sub-nav a.current {
-    color: var(--accent);
-    border-left-color: var(--accent);
-    font-weight: 600;
-  }
-  .sub-nav .num {
-    color: var(--accent);
-    margin-right: 6px;
-    font-weight: 500;
-  }
-  .content { min-width: 0; }
-  header {
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 28px;
-    margin-bottom: 40px;
-  }
-  .eyebrow {
-    font-family: "Inter", -apple-system, sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 14px;
-  }
-  h1 {
-    font-family: "Iowan Old Style", "Charter", Georgia, serif;
-    font-size: 38px;
-    line-height: 1.15;
-    font-weight: 600;
-    margin: 0 0 12px;
-    letter-spacing: -0.01em;
-  }
-  .subtitle {
-    font-size: 18px;
-    color: var(--muted);
-    font-style: italic;
-    margin-bottom: 18px;
-  }
-  .meta {
-    font-family: "Inter", -apple-system, sans-serif;
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-  h2 {
-    font-family: "Inter", -apple-system, sans-serif;
-    font-size: 22px;
-    font-weight: 600;
-    margin: 56px 0 8px;
-    letter-spacing: -0.01em;
-    scroll-margin-top: 30px;
-  }
-  h2:first-of-type { margin-top: 0; }
-  h2 .num {
-    color: var(--accent);
-    font-weight: 500;
-    margin-right: 12px;
-  }
-  h3 {
-    font-family: "Inter", -apple-system, sans-serif;
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    margin: 32px 0 10px;
-    font-weight: 600;
-  }
-  p { margin: 0 0 18px; }
-  .lead {
-    font-size: 19px;
-    line-height: 1.5;
-  }
-  blockquote {
-    border-left: 3px solid var(--accent);
-    margin: 24px 0;
-    padding: 8px 0 8px 22px;
-    font-style: italic;
-    color: var(--ink);
-    font-size: 18px;
-    line-height: 1.5;
-  }
-  blockquote cite {
-    display: block;
-    font-style: normal;
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 8px;
-    font-family: "Inter", sans-serif;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0 32px;
-    font-size: 14px;
-    font-family: "Inter", -apple-system, sans-serif;
-  }
-  th {
-    text-align: left;
-    background: var(--soft);
-    padding: 10px 12px;
-    border-bottom: 2px solid var(--rule);
-    font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--muted);
-  }
-  td {
-    padding: 12px;
-    border-bottom: 1px solid var(--rule);
-    vertical-align: top;
-    line-height: 1.45;
-  }
-  td:first-child {
-    font-weight: 600;
-    color: var(--ink);
-    width: 22%;
-  }
-  ul {
-    margin: 0 0 20px;
-    padding-left: 22px;
-  }
-  li { margin-bottom: 8px; }
-  .callout {
-    background: var(--soft);
-    border-left: 3px solid var(--accent);
-    padding: 18px 22px;
-    margin: 28px 0;
-    font-size: 16px;
-  }
-  .callout strong { color: var(--accent); }
-  .tier {
-    margin: 18px 0;
-    padding: 14px 18px;
-    border-left: 2px solid var(--rule);
-    background: rgba(255,255,255,0.5);
-  }
-  .tier-label {
-    font-family: "Inter", sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-  .tier-title {
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-  .tier-body {
-    font-size: 15px;
-    color: var(--ink);
-    line-height: 1.5;
-  }
-  footer {
-    margin-top: 80px;
-    padding-top: 20px;
-    border-top: 1px solid var(--rule);
-    font-family: "Inter", sans-serif;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-  .yes { color: #2d6a3e; font-weight: 600; }
-  .no { color: var(--accent); font-weight: 600; }
-  .partial { color: #b07a1f; font-weight: 600; }
-
-
   .dy-avatar {
     position: fixed;
     top: 20px;
@@ -240,7 +38,7 @@
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    border: 2.5px solid var(--rule);
+    border: 2.5px solid var(--color-rule-s);
     z-index: 1000;
     opacity: 0.9;
     transition: opacity 0.2s ease, transform 0.2s ease;
@@ -250,432 +48,218 @@
     opacity: 1;
     transform: scale(1.08);
   }
-
-  @media (max-width: 860px) {
-    .layout {
-      grid-template-columns: 1fr;
-      gap: 0;
-    }
-    .sub-nav {
-      position: static;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px 0;
-      padding-bottom: 18px;
-      margin-bottom: 24px;
-      border-bottom: 1px solid var(--rule);
-    }
-    .sub-nav-label { width: 100%; border-bottom: none; padding-bottom: 4px; }
-    .sub-nav a {
-      padding: 4px 10px;
-      border-left: none;
-      margin-left: 0;
-      font-size: 12px;
-      flex: 0 0 auto;
-    }
-    .sub-nav a.current {
-      border-left: none;
-      background: rgba(138, 51, 36, 0.08);
-      border-radius: 2px;
-    }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 88px 40px 96px;
   }
-  @media print {
-    .dy-avatar { position: absolute; opacity: 0.7; }
-    body { font-size: 11pt; }
-    .wrap { max-width: 100%; padding: 0; }
-    .layout { grid-template-columns: 1fr; }
-    .sub-nav { display: none; }
-    h2 { page-break-after: avoid; }
-    table, blockquote, .callout { page-break-inside: avoid; }
+  header.masthead {
+    border-bottom: 1px solid var(--color-rule-s);
+    padding-bottom: 36px;
+    margin-bottom: 48px;
+  }
+  .kicker {
+    font-family: "Barlow", sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-accent);
+    margin: 0 0 22px;
+    font-weight: 600;
+  }
+  h1.masthead-title {
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: clamp(36px, 5.5vw, 52px);
+    line-height: 1.1;
+    margin: 0 0 22px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+  }
+  h1.masthead-title em {
+    font-style: italic;
+    color: var(--color-accent);
+    font-weight: 400;
+  }
+  .tagline {
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    margin: 0 0 22px;
+    max-width: 540px;
+    font-weight: 400;
+  }
+  .byline {
+    font-family: "Barlow", sans-serif;
+    font-size: 0.78rem;
+    color: var(--color-faint);
+    letter-spacing: 0.02em;
+    line-height: 1.7;
+    margin: 0;
+    font-weight: 400;
+  }
+  .byline a {
+    color: var(--color-text-muted);
+    text-decoration: underline;
+    text-decoration-color: var(--color-rule-s);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .byline a:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+  }
+  .section-label {
+    font-family: "Barlow", sans-serif;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-accent);
+    margin: 0 0 32px;
+    font-weight: 600;
+  }
+  .entry {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--color-rule);
+    transition: padding 0.25s ease;
+  }
+  .entry:first-of-type { padding-top: 4px; }
+  .entry:last-of-type { border-bottom: none; }
+  .entry:hover { padding-left: 8px; }
+  .entry-meta {
+    font-family: "Barlow", sans-serif;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-faint);
+    margin: 0 0 10px;
+    font-weight: 500;
+  }
+  .entry-meta .dot {
+    margin: 0 8px;
+    color: var(--color-rule-s);
+  }
+  .entry-title {
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    font-weight: 700;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+    transition: color 0.18s ease;
+  }
+  .entry:hover .entry-title { color: var(--color-accent); }
+  .entry-summary {
+    font-family: "Barlow", sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0;
+    font-weight: 400;
+  }
+  hr.section {
+    border: 0;
+    text-align: center;
+    margin: 56px 0 40px;
+    color: var(--color-faint);
+    letter-spacing: 0.5em;
+    font-size: 12px;
+  }
+  hr.section::before { content: "* * *"; }
+  .about-block {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+  .about-block p { margin: 0 0 14px; }
+  .about-block p:last-child { margin-bottom: 0; }
+  .about-block a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+  .about-block a:hover {
+    text-decoration-thickness: 2px;
+    color: var(--color-accent-light);
+  }
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-rule-s);
+    font-family: "Barlow", sans-serif;
+    font-size: 0.7rem;
+    color: var(--color-faint);
+    letter-spacing: 0.02em;
+    line-height: 1.8;
+    font-weight: 400;
+  }
+  footer .built-by {
+    display: inline-block;
+    margin-top: 4px;
+    font-style: italic;
+    opacity: 0.85;
+  }
+  footer .built-by a {
+    color: var(--color-faint);
+    text-decoration: underline;
+    text-decoration-color: var(--color-rule-s);
+    text-underline-offset: 2px;
+  }
+  footer .built-by a:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 56px 24px 80px; }
+    .tagline { font-size: 16px; }
+    .entry-title { font-size: 1.3rem; }
+    .dy-avatar { width: 44px; height: 44px; top: 16px; right: 16px; }
   }
 </style>
 </head>
 <body>
 <img class="dy-avatar" src="data:image/jpeg;base64,/9j/4QGKRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUAAAABAAAAYgEbAAUAAAABAAAAagEoAAMAAAABAAIAAAEyAAIAAAAUAAAAcgITAAMAAAABAAEAAIdpAAQAAAABAAAAhgAAAAAAAABIAAAAAQAAAEgAAAABMjAyNjowNDoxMiAyMjozNjozMAAAD5AAAAcAAAAEMDIyMZADAAIAAAAUAAABQJAEAAIAAAAUAAABVJAQAAIAAAAHAAABaJARAAIAAAAHAAABcJASAAIAAAAHAAABeJEBAAcAAAAEAQIDAJKQAAIAAAAEMjg4AJKRAAIAAAAEMjg4AJKSAAIAAAAEMjg4AKAAAAcAAAAEMDEwMKABAAMAAAABAAEAAKACAAQAAAABAAABtaADAAQAAAABAAAB5qQGAAMAAAABAAAAAAAAAAAyMDI2OjA0OjEyIDIyOjM2OjMwADIwMjY6MDQ6MTIgMjI6MzY6MzAALTA0OjAwAAAtMDQ6MDAAAC0wNDowMAAAAAD/4QpfaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA2LjAuMCI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtcDpDcmVhdGVEYXRlPSIyMDI2LTA0LTEyVDIyOjM2OjMwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyNi0wNC0xMlQyMjozNjozMCIgcGhvdG9zaG9wOkRhdGVDcmVhdGVkPSIyMDI2LTA0LTEyVDIyOjM2OjMwLTA0OjAwIj4gPGRjOnN1YmplY3Q+IDxyZGY6QmFnLz4gPC9kYzpzdWJqZWN0PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8P3hwYWNrZXQgZW5kPSJ3Ij8+AP/bAIQAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PDwECAgIEBAQHBAQHEAsJCxAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ/90ABAAc/8AAEQgB5gG1AwEiAAIRAQMRAf/EAaIAAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKCxAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6AQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgsRAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLD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" alt="" />
+
 <div class="wrap">
 
-<header>
-  <div class="eyebrow">Working Note</div>
-  <h1>Physical Risk Swaps</h1>
-  <div class="subtitle">A new instrument for hedging climate hazards. What it is, what it would take, what's missing.</div>
-  <div class="meta">May 2026 &middot; Source: MKM Research Labs, <em>Weather Patterns to Physical Risk Swaps</em>, April 2025</div>
+<header class="masthead">
+  <p class="kicker">Rumination</p>
+  <h1 class="masthead-title">Working <em>notes</em>.</h1>
+  <p class="tagline">Slow thinking on climate, capital, and the systems in between. Drafts more than verdicts.</p>
+  <p class="byline">By Dee Yang &middot; Partner, <a href="https://www.systemiq.earth" target="_blank" rel="noopener">Systemiq</a> &middot; Head of US Office &middot; New York</p>
 </header>
 
-<div class="layout">
+<p class="section-label">Recent</p>
 
-<aside class="sub-nav">
-  <div class="sub-nav-label">Contents</div>
-  <a href="#s1" data-target="s1"><span class="num">1</span>The Idea</a>
-  <a href="#s2" data-target="s2"><span class="num">2</span>vs CDS &amp; MBS</a>
-  <a href="#s3" data-target="s3"><span class="num">3</span>Origin Stories</a>
-  <a href="#s4" data-target="s4"><span class="num">4</span>The Data Problem</a>
-  <a href="#s5" data-target="s5"><span class="num">5</span>What Would Have to Be True</a>
-  <a href="#s6" data-target="s6"><span class="num">6</span>How Big Could This Be</a>
-</aside>
+<a class="entry" href="physical-risk-swaps.html">
+  <p class="entry-meta">2026 &middot; 05 &middot; 01<span class="dot">&middot;</span>Working note</p>
+  <h2 class="entry-title">Physical Risk Swaps.</h2>
+  <p class="entry-summary">A new derivative class for hedging climate hazards over multi-decade horizons. What it is, how it compares to CDS and MBS, and what would have to be true for the market to exist.</p>
+</a>
 
-<div class="content">
+<hr class="section">
 
-<p class="lead">A research lab inside the FINOS / ISDA orbit is proposing a new derivative class designed to bridge the duration mismatch between long-dated mortgages and annually-renewed insurance. The instrument is structurally a credit default swap. The hazard it covers is flood, eventually all physical risk. The financial engineering is elegant. The harder work is the data and infrastructure layer underneath, which the book treats as a starting point and which is in many ways the real prize.</p>
+<p class="section-label">About</p>
 
-<h2 id="s1"><span class="num">1</span>The Idea</h2>
-
-<p>The banking system holds 30-year mortgage assets. The insurance system covers those assets one year at a time. As climate risk rises, insurance withdraws (42% of US coastal insurers exited Florida and the Carolinas in 2024) or repricing exceeds affordability (flood premiums up 58% year on year). That leaves banks holding collateral with no long-dated protection.</p>
-
-<p>A Physical Risk Swap (PRS) closes the gap. The bank pays a fixed periodic fee to a counterparty. If a defined physical event occurs (water gauge crosses threshold X), the counterparty pays a defined amount. The contract runs the length of the mortgage.</p>
-
-<blockquote>
-"Physical Risk Swaps represent a pioneering banking innovation designed to bridge this gap. By adapting established capital markets instruments to address climate-related physical risks, PRS offers a mechanism for banking institutions to effectively transfer and manage these exposures over multi-year horizons that align with their asset profiles."
-<cite>David K Kelly, MKM Research Labs</cite>
-</blockquote>
-
-<p>Three structural choices distinguish PRS from existing catastrophe insurance:</p>
-<ul>
-  <li><strong>Parametric trigger.</strong> Payout fires on a measurement (gauge reading), not a damage assessment. No adjusters, no negotiation, automatic settlement.</li>
-  <li><strong>Multi-year duration.</strong> 10 to 30 years, matching mortgage terms rather than annual insurance cycles.</li>
-  <li><strong>Capital markets distribution.</strong> Sold to reinsurers, pension funds, and capital markets investors rather than absorbed within an insurance balance sheet.</li>
-</ul>
-
-<p>The pitch is that this transforms physical risk from an unhedgeable, growing balance sheet liability into a tradable asset class with Basel III capital relief.</p>
-
-<h3>Beyond mortgages</h3>
-
-<p>The book frames PRS primarily through a mortgage lens because that is the largest pool and the cleanest analogy to CDS. The instrument is not limited to mortgages. The same structure works for any long-dated exposure to a measurable physical hazard:</p>
-
-<ul>
-  <li><strong>Corporate real estate.</strong> REITs and property operators with concentrated portfolios in flood-exposed or wildfire-exposed regions.</li>
-  <li><strong>Industrial assets.</strong> Refineries, chemical plants, semiconductor fabs, and other capital-intensive facilities sited near rivers, coasts, or fire-prone landscapes.</li>
-  <li><strong>Logistics and data infrastructure.</strong> Warehouses, distribution centers, and data centers, often clustered in hazard-exposed locations for tax or land-cost reasons.</li>
-  <li><strong>Utilities and energy.</strong> Power generation, transmission, and grid assets exposed to wind, flood, or wildfire.</li>
-  <li><strong>Agriculture and forestry.</strong> Drought, flood, and fire exposure on large managed land portfolios.</li>
-  <li><strong>Hospitality.</strong> Hotel and resort portfolios concentrated in coastal or storm-exposed regions.</li>
-</ul>
-
-<p>Corporate counterparties may actually be easier first movers than banks. Single counterparty, sophisticated buyer, often shorter duration (5 to 10 years aligned with capital expenditure cycles rather than 30-year mortgages), and direct exposure to the underlying asset rather than collateral two steps removed. Some of the earliest PRS pilots are likely to be corporate hedges, not mortgage hedges.</p>
-
-<h2 id="s2"><span class="num">2</span>How it Compares to CDS and MBS</h2>
-
-<p>The instrument is most easily understood by analogy to two existing products that solved similar problems for credit risk.</p>
-
-<table>
-<thead>
-<tr><th>Dimension</th><th>CDS</th><th>MBS</th><th>PRS</th></tr>
-</thead>
-<tbody>
-<tr><td>What you own</td><td>Insurance against borrower default</td><td>Claim on mortgage cash flows</td><td>Insurance against property hazard</td></tr>
-<tr><td>Duration</td><td>1 to 5 years</td><td>15 to 30 years</td><td>10 to 30 years</td></tr>
-<tr><td>Cash flow</td><td>Premiums, payout on default</td><td>Monthly principal and interest</td><td>Premiums, payout on parametric trigger</td></tr>
-<tr><td>Trigger</td><td>Borrower default</td><td>Default or prepayment</td><td>Water gauge reading or measured event</td></tr>
-<tr><td>Pricing inputs</td><td>PD, LGD, credit spreads</td><td>Rates, prepay speeds, home prices</td><td>Flood probability, damage function, climate model</td></tr>
-<tr><td>Historical data</td><td>40+ years credit cycles</td><td>60+ years housing data</td><td>5 to 10 years modeled; climate non-stationary</td></tr>
-<tr><td>Market size</td><td>~$10T notional</td><td>~$10T outstanding</td><td>~$0 (nascent)</td></tr>
-<tr><td>Maturity</td><td>Liquid, standardized</td><td>Mature, post-2008 reformed</td><td>Beta CDM spec, Feb 2025</td></tr>
-<tr><td>Typical buyer</td><td>Hedge funds, banks, asset managers</td><td>Pensions, insurance, retail</td><td>Reinsurers, patient capital</td></tr>
-<tr><td>Stationarity assumption</td><td>Credit risk stationary</td><td>Housing predictable</td><td>Climate stationary (broken)</td></tr>
-<tr><td>Regulatory capital</td><td>Basel III, established</td><td>Reformed post-2008</td><td>Being formalized</td></tr>
-<tr><td>Counterparty risk horizon</td><td>1 to 5 years</td><td>N/A (pass-through)</td><td>10 to 30 years</td></tr>
-</tbody>
-</table>
-
-<div class="callout">
-<strong>The throughline.</strong> CDS transferred credit risk from banks to capital markets. MBS transferred origination risk. PRS attempts the same for climate risk, and the underlying problem is genuinely harder. The duration is longer, the models are newer, and the track record has yet to be built. That is also why it matters: there is no existing instrument doing this job.
+<div class="about-block">
+  <p>Rumination is a working catalogue. Notes that aren't ready to be essays. Working drafts of arguments. Slow takes on fast-moving questions in climate finance, resilience, and how capital markets respond to physical risk.</p>
+  <p>Longer pieces live on <a href="https://planetaryps.substack.com" target="_blank" rel="noopener">Planetary PS</a>. The day job is at <a href="https://www.systemiq.earth" target="_blank" rel="noopener">Systemiq</a>, building US sustainability practice.</p>
 </div>
-
-<h2 id="s3"><span class="num">3</span>Origin Stories</h2>
-
-<p>Both predecessor instruments started with a specific bank, a specific client, and a specific balance sheet problem. Neither was designed in advance. Both were structured around what data already existed.</p>
-
-<h3>CDS. JPMorgan, Exxon, 1994.</h3>
-
-<p>JPMorgan held a $4.8 billion credit line to Exxon, opened in the wake of the Valdez oil spill litigation. The exposure was capital-intensive but politically untouchable. JPMorgan could not sell the loan or pull the line without rupturing a top-tier relationship.</p>
-
-<p>Blythe Masters, then 25, led a small team that structured a swap with the European Bank for Reconstruction and Development. JPMorgan paid EBRD a fee. EBRD assumed the default risk. The loan stayed on JPMorgan's books and Exxon never knew. Capital was freed.</p>
-
-<p>What followed was institutional packaging more than financial innovation. ISDA published standardized credit definitions in 1999. The 2003 ISDA Credit Derivatives Definitions cemented the legal template. Volume migrated from bank-to-reinsurer hedges to hedge funds and asset managers using CDS as a directional bet on credit. Notional outstanding grew from under $1 trillion in 2001 to roughly $62 trillion by 2007. Then 2008 happened. Post-crisis reform pushed standardized contracts to central clearing. The market today sits around $10 trillion notional, mostly index trades, with single-name CDS a fraction of its peak.</p>
-
-<p>What made it scale: the data already existed (credit ratings, bond spreads, financials), the legal template existed (ISDA Master Agreement), natural counterparties existed (reinsurers, monolines), and capital relief was clear from the start.</p>
-
-<h3>MBS. Ginnie Mae, 1968. Lewis Ranieri, 1977.</h3>
-
-<p>The first mortgage-backed security was a government instrument. Ginnie Mae issued the first MBS in 1968 to expand housing finance, with full federal guarantee on principal and interest. Freddie Mac followed in 1971 with the first conventional MBS. The product worked but stayed niche through the 1970s.</p>
-
-<p>The market that mattered was built by Lewis Ranieri at Salomon Brothers. Ranieri assembled a desk of mortgage traders in 1977 and spent six years convincing banks, regulators, and pension funds that pooled mortgage cash flows could trade like bonds. The breakthrough came in 1983 with the Collateralized Mortgage Obligation, which sliced mortgage pools into tranches with different durations and risk profiles. Suddenly pension funds had a 5-year tranche and insurers had a 30-year tranche from the same underlying pool.</p>
-
-<p>The Tax Reform Act of 1986 added the REMIC structure, eliminating double taxation and unlocking institutional flow. Private-label MBS grew through the 1990s and exploded in the 2000s with subprime origination. By 2007 the market was $10 trillion. The 2008 crisis exposed the failure of correlation assumptions and origination discipline. Post-crisis reform tightened underwriting standards and reduced private-label issuance, but the agency MBS market remains roughly $10 trillion outstanding today, the second-largest fixed-income market in the world after Treasuries.</p>
-
-<p>What made it scale: standardized mortgage data from FNMA, government guarantee on early issuance, tranching as the structural innovation that matched investor duration needs, and tax reform as the policy unlock.</p>
-
-<div class="callout">
-<strong>The pattern.</strong> Both instruments scaled because they had four tailwinds at the same time: existing data, ready legal templates, natural counterparties, and regulatory or tax incentives. PRS is starting earlier in that sequence. MKM is building the legal and data framework first, ahead of demand, which is the right order if demand eventually appears. The path is longer and the build-out is more deliberate, but it is also the kind of foundational work that has to happen before any of the rest is possible.
-</div>
-
-<h2 id="s4"><span class="num">4</span>The Data Problem</h2>
-
-<p>This is where the analogy to CDS and MBS breaks. Both predecessors scaled because the data they needed already existed.</p>
-
-<table>
-<thead>
-<tr><th>Data dependency</th><th>CDS</th><th>MBS</th><th>PRS</th></tr>
-</thead>
-<tbody>
-<tr><td>Source</td><td>Company financials, credit ratings, bond spreads</td><td>Credit scores, appraisals, FNMA standards</td><td>Gauges, hydrology models, LiDAR, real-time flood data</td></tr>
-<tr><td>Already existed?</td><td class="yes">Yes, decades</td><td class="yes">Yes, decades</td><td class="no">No, barely</td></tr>
-<tr><td>Who collected it?</td><td>Rating agencies, banks</td><td>Banks, appraisers, FNMA</td><td>Nobody. Some govt agencies in some regions.</td></tr>
-<tr><td>Cost to use</td><td>Near zero</td><td>Near zero</td><td>Billions to build infrastructure</td></tr>
-<tr><td>Could first movers move without it?</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="no">No</td></tr>
-</tbody>
-</table>
-
-<p>CDS and MBS used data already being collected for other commercial purposes (credit underwriting, mortgage origination). PRS requires building its own data infrastructure as a prerequisite. That infrastructure is hazard-specific, region-specific, and currently absent at the scale needed for property-level underwriting.</p>
-
-<h3>Multiplied across hazards</h3>
-
-<p>Flood is the easiest case. The book devotes 80% of its pages to flood because it is the only hazard with even partial gauge infrastructure (UK Thames; some US river basins via USGS). Every other hazard requires a different sensor stack:</p>
-
-<table>
-<thead>
-<tr><th>Hazard</th><th>Sensors required</th><th>Coverage today</th></tr>
-</thead>
-<tbody>
-<tr><td>Flood (river)</td><td>River gauges, rainfall</td><td class="partial">Moderate in developed countries</td></tr>
-<tr><td>Flood (urban)</td><td>Drainage, rainfall intensity, soil moisture</td><td class="no">Negligible</td></tr>
-<tr><td>Wildfire</td><td>Fuel moisture, satellite fire detection, weather</td><td class="partial">Satellite operational; ground sparse</td></tr>
-<tr><td>Drought</td><td>Soil moisture, groundwater, precipitation</td><td class="no">Sparse and fragmented</td></tr>
-<tr><td>Wind / hurricane</td><td>Anemometers, pressure, structural damage</td><td class="partial">Weather stations, not property level</td></tr>
-<tr><td>Extreme heat</td><td>Temperature, humidity, grid demand, health impact</td><td class="partial">Temperature exists, parametrization unclear</td></tr>
-<tr><td>Coastal erosion</td><td>Tide gauges, wave sensors, shoreline monitoring</td><td class="partial">Mostly research grade</td></tr>
-<tr><td>Earthquake</td><td>Seismic, building damage, aftershocks</td><td class="partial">Seismic strong, damage assessment weak</td></tr>
-</tbody>
-</table>
-
-<div class="callout">
-<strong>The constraint.</strong> A unified physical risk swap market across all hazards would require something on the order of $10 to $50 billion in sensor infrastructure across regions, hazard types, and certification regimes. The likely path is not a single global asset class but a sequence of region-hazard-specific sub-markets that mature at different speeds. Flood goes first because the data is closest to ready. Other hazards follow as their infrastructure catches up.
-</div>
-
-<h3>What changes the trajectory</h3>
-
-<p>Satellite and IoT compress the cost curve faster than the book acknowledges. ICEYE delivers commercial flood mapping to Munich Re and Swiss Re today. NASA FIRMS, Sentinel, Planet, and Maxar provide near-real-time hazard data. LoRaWAN-connected sensors have dropped from $10K to $500. Jupiter, Cervest, Climate Engine, and First Street are building the analytical layer.</p>
-
-<p>This solves wide-area sensing. It does not yet solve property-level damage assessment, legal auditability of satellite data for swap settlement, single-vendor concentration risk, or the calibration period needed to price 30-year contracts.</p>
-
-<h2 id="s5"><span class="num">5</span>What Would Have to Be True</h2>
-
-<p>Four tiers of preconditions, in order of dependency. The book mostly addresses Tier 1. Tiers 2 through 4 are the binding constraints.</p>
-
-<div class="tier">
-<div class="tier-label">Tier 1 — Legal &amp; Regulatory</div>
-<div class="tier-title">In progress. Soluble in 2 to 3 years.</div>
-<div class="tier-body">
-ISDA spec for PRS finalized (Beta released February 2025). Basel III capital relief confirmed for hedged physical exposure. Common Domain Model extended to property and physical hazards. Parametric trigger mechanisms legally codified. This is the layer the book directly contributes to.
-</div>
-</div>
-
-<div class="tier">
-<div class="tier-label">Tier 2 — Data &amp; Physical Infrastructure</div>
-<div class="tier-title">Partially soluble. 5 to 10 years.</div>
-<div class="tier-body">
-Gauge networks dense enough for property-level pricing. Real-time, tamper-proof data feeds. Property-level elevation (LiDAR). Damage functions calibrated on observed events. Standardized data definitions across satellite, IoT, and government providers. Satellite and IoT acceleration helps, but legal auditability and provider concentration are unresolved.
-</div>
-</div>
-
-<div class="tier">
-<div class="tier-label">Tier 3 — Modeling Capacity</div>
-<div class="tier-title">Talent-constrained. 5 to 10 years.</div>
-<div class="tier-body">
-Reinsurers and capital markets buyers need internal modeling teams that combine hydrology, weather science, and banking risk. This talent does not exist at the scale required. Independent model validation, basis risk calibration, and backtesting all require staff that takes years to recruit and train.
-</div>
-</div>
-
-<div class="tier">
-<div class="tier-label">Tier 4 — Market Structure</div>
-<div class="tier-title">Follows from 1 through 3. 8 to 15 years.</div>
-<div class="tier-body">
-Two to three reinsurers willing to make markets. Anchor banks (JPM, GS, BNP) as early hedgers. Volume threshold (~50 trades/year) for pricing standardization. Secondary market liquidity. Regulatory mandate or major insurance market collapse to force volume.
-</div>
-</div>
-
-<h3>Lessons from CDS</h3>
-
-<p>CDS scaled because four conditions aligned: bank demand for credit hedging, existing data infrastructure, a ready legal template (ISDA Master Agreement 1992), and natural counterparties (monolines, reinsurers) already in the tail-risk business. Capital relief sealed the incentive.</p>
-
-<p>PRS is being built earlier in that sequence. The data infrastructure is partial. The legal template is being written now. Reinsurers are watching but not yet pulling. This is what foundational market-building looks like in its first decade. CDS spent years in a similar phase before institutional demand caught up.</p>
-
-<div class="callout">
-<strong>The catalyst question.</strong> CDS volume followed natural demand. PRS volume will likely need a forcing event to accelerate. Realistic catalysts: another insurance market shock comparable to 2024 Florida; a regulatory mandate to hedge material flood exposure; a marquee reinsurer publicly making market in PRS at announced prices. The product can exist before any of these arrive. Scale follows when one or more does.
-</div>
-
-<h3>Realistic timeline</h3>
-
-<ul>
-  <li><strong>2025 to 2028.</strong> Flood PRS pilots in monitored regions (Thames, possibly one US basin). Legal and regulatory layer matures.</li>
-  <li><strong>2028 to 2032.</strong> Wildfire and coastal pilots. Satellite data legally certified. First reinsurer market-makers.</li>
-  <li><strong>2032 to 2035.</strong> Multi-hazard standardization. Volume threshold reached in flood. Modeling talent matures.</li>
-  <li><strong>2035 and beyond.</strong> If catalysts occur, mainstream physical risk swap market across hazards and geographies.</li>
-</ul>
-
-<p>The book is appropriately ambitious about the financial engineering and the legal architecture, both of which are within reach in the next two to three years. The longer arc is the data infrastructure, sensor deployment, and certification regimes that turn an instrument into a market. That is more like a decade of build, but it is the kind of decade-long build that has shaped every fixed-income market that came before this one.</p>
-
-<h2 id="s6"><span class="num">6</span>How Big Could This Be?</h2>
-
-<p>Market sizing for a product that does not yet exist is a thought experiment, not a forecast. The useful frame is to triangulate three ways: top-down from physical-risk-exposed mortgage stock, sideways from comparable instruments, and by analogy to CDS adoption curves.</p>
-
-<h3>Top-down. Mortgage stock at risk.</h3>
-
-<table>
-<thead>
-<tr><th>Exposure pool</th><th>Estimated size</th><th>Notes</th></tr>
-</thead>
-<tbody>
-<tr><td>US mortgage market (total)</td><td>~$13T outstanding</td><td>FHFA, Fed Z.1</td></tr>
-<tr><td>US mortgages in FEMA flood zones</td><td>~$1.5 to $2T</td><td>FEMA SFHA exposure</td></tr>
-<tr><td>US mortgages at moderate-to-extreme flood risk</td><td>~$2.5T by 2050</td><td>First Street Foundation</td></tr>
-<tr><td>US mortgages in WUI (wildfire)</td><td>~$1.5 to $2T</td><td>CA, OR, CO, AZ; Headwaters Economics</td></tr>
-<tr><td>US mortgages in coastal storm exposure</td><td>~$2T</td><td>Atlantic + Gulf, NOAA</td></tr>
-<tr><td><strong>Total US physically-exposed mortgages</strong></td><td><strong>~$4 to $6T</strong></td><td>Net of overlap</td></tr>
-<tr><td>Globally (US + EU + UK + Aus + JP)</td><td>~$15 to $25T</td><td>Rough scaling</td></tr>
-</tbody>
-</table>
-
-<p>This defines the addressable pool. PRS does not need to cover all of it; the question is what fraction realistically gets hedged.</p>
-
-<div class="callout">
-<strong>Where the risk actually sits matters. (Geographic nuance.)</strong> The US mortgage market is unusual in that roughly 70% of outstanding mortgages are securitized through Fannie Mae, Freddie Mac, Ginnie Mae, or private-label MBS. The originating bank passes the long-term risk to MBS investors: pension funds, insurers, foreign central banks, asset managers. Banks themselves hold perhaps $3 to $4 trillion directly, mostly jumbo and portfolio loans. So the natural PRS buyer in the US is not necessarily the bank. It is the GSEs and the MBS investor base who hold the 30-year exposure on hedge-less paper. In Europe (UK, Germany, France, Netherlands), most mortgages stay on bank balance sheets and the PRS pitch lands directly with the originator. Australia and Canada sit in between. This changes who initiates trades, who pays for hedges, and how regulators design the capital relief framework. PRS may scale faster outside the US precisely because the originator and risk holder are the same entity.
-</div>
-
-<h3>Adding corporate exposure</h3>
-
-<table>
-<thead>
-<tr><th>Exposure pool</th><th>Estimated size</th><th>Notes</th></tr>
-</thead>
-<tbody>
-<tr><td>US commercial real estate</td><td>~$25T value</td><td>~$5T physically exposed at material levels</td></tr>
-<tr><td>US corporate fixed assets in hazard zones</td><td>~$3 to $5T</td><td>Industrial, logistics, energy, data centers</td></tr>
-<tr><td>Globally (corporate + commercial real estate)</td><td>~$15 to $25T physically exposed</td><td>Rough scaling</td></tr>
-</tbody>
-</table>
-
-<p>Corporate hedging adds materially to the addressable pool and may move faster than mortgage hedging because the buyer (REIT, industrial operator, utility) is often the direct asset owner with sophisticated risk management already in place. Combined mortgage plus corporate addressable exposure is in the range of $30 to $50 trillion globally. The fraction that converts to PRS notional remains the open question.</p>
-
-<h3>Sideways. Comparable instruments.</h3>
-
-<table>
-<thead>
-<tr><th>Instrument</th><th>Current size</th><th>Relevance to PRS</th></tr>
-</thead>
-<tbody>
-<tr><td>Catastrophe bonds</td><td>~$50B outstanding</td><td>Closest analog. Multi-year, parametric or indemnity, capital markets distribution.</td></tr>
-<tr><td>Parametric insurance (all hazards)</td><td>~$15 to $20B premium</td><td>Trigger mechanism analog. Growing 20%+ annually.</td></tr>
-<tr><td>Property cat reinsurance</td><td>~$700B premium globally</td><td>The market PRS would partially substitute.</td></tr>
-<tr><td>Single-name CDS</td><td>~$3T notional</td><td>Post-crisis, post-reform. Mature scale.</td></tr>
-<tr><td>CDX / iTraxx index CDS</td><td>~$7T notional</td><td>Standardized, liquid.</td></tr>
-<tr><td>CDS at peak (2007)</td><td>~$62T notional</td><td>Pre-reform. Aspirational ceiling.</td></tr>
-</tbody>
-</table>
-
-<h3>By analogy. CDS adoption curve.</h3>
-
-<p>CDS reached ~50% of underlying corporate credit markets at peak. MBS reached effectively 100% of conforming US mortgages via securitization. PRS will not approach either ratio because the data infrastructure caps practical coverage to specific monitored regions and hazards.</p>
-
-<p>A more realistic ceiling: 10 to 25% of physically-exposed mortgages get hedged via PRS at maturity. That implies $400B to $1.5T notional in the US alone, $1.5T to $6T globally.</p>
-
-<h3>Three scenarios.</h3>
-
-<div class="tier">
-<div class="tier-label">Conservative — 2030 to 2035</div>
-<div class="tier-title">$50 to $200 billion notional outstanding</div>
-<div class="tier-body">
-Flood-only PRS in heavily-monitored regions (Thames, parts of Northeast US). Mostly bank-to-reinsurer trades, bilateral, customized. Comparable to today's catastrophe bond market in scale. Modest secondary trading. No retail or pension fund flow.
-</div>
-</div>
-
-<div class="tier">
-<div class="tier-label">Base case — 2035 to 2042</div>
-<div class="tier-title">$500 billion to $1.5 trillion notional</div>
-<div class="tier-body">
-Multi-hazard (flood + wildfire + coastal), multi-region. Pension funds and insurers participate as patient capital. Standardized contracts on benchmark indices. Comparable to current single-name CDS market scale. Requires Tier 2 and 3 preconditions to be largely solved by 2035.
-</div>
-</div>
-
-<div class="tier">
-<div class="tier-label">Aggressive — 2042 and beyond</div>
-<div class="tier-title">$2 to $5 trillion notional</div>
-<div class="tier-body">
-PRS becomes standard hedge for physical-risk-exposed mortgage portfolios. Index-based contracts across hazard pools. Reaches credit-derivative-like maturity. Requires regulatory mandate or repeated market stress (insurance collapses, sovereign action) to drive volume. Approaches but does not reach pre-2008 CDS scale.
-</div>
-</div>
-
-<div class="callout">
-<strong>Where the impact lands.</strong> Even in the aggressive scenario, PRS at $2 to $5 trillion notional sits below the global credit and mortgage markets in absolute size. Where it matters is regional. In flood-exposed coastal markets, PRS has the potential to become load-bearing infrastructure for mortgage availability and property values within a decade. The systemic importance is local, which is also where physical risk actually lives.
-</div>
-
-<h3>What drives upside.</h3>
-<ul>
-  <li><strong>Insurance market collapse.</strong> A second 2024-Florida event (or three of them) forces banks into PRS as the only available hedge. This is the single largest driver of accelerated adoption.</li>
-  <li><strong>Regulatory mandate.</strong> Basel IV or Federal Reserve guidance requiring physical risk hedging on collateral. Compresses timeline by 5+ years if it happens.</li>
-  <li><strong>Reinsurer pull.</strong> Munich Re or Swiss Re publicly making market in PRS. Signals legitimacy, draws capital markets in.</li>
-  <li><strong>Sovereign participation.</strong> A government backstop for early issuance (analogous to Ginnie Mae in MBS). Would unlock institutional flow within years.</li>
-</ul>
-
-<h3>What caps it.</h3>
-<ul>
-  <li>Data infrastructure costs. Sensor networks for hazards beyond flood take a decade-plus to build out.</li>
-  <li>Climate non-stationarity. If models prove unreliable past 10 years, 30-year contracts become unpriceable and the market ceiling drops.</li>
-  <li>Counterparty concentration. If only two or three reinsurers can write, capacity is structurally limited regardless of demand.</li>
-  <li>Basis risk. If gauge readings diverge meaningfully from actual property damage in early events, trust erodes and the market freezes (the AIG 2008 analog).</li>
-</ul>
 
 <footer>
-Working note. Distill of MKM Research Labs first edition, April 2025. Internal use.
+&copy; 2026 Dee Yang &middot; Working notes &middot; Not investment advice &middot; Not the views of Systemiq
+<br>
+<span class="built-by">Site built and kept up by <a href="https://claude.com/claude-code" target="_blank" rel="noopener">Claude</a>.</span>
 </footer>
 
-</div><!-- /.content -->
-</div><!-- /.layout -->
-
-</div><!-- /.wrap -->
-
-<script>
-(function () {
-  var navLinks = document.querySelectorAll('.sub-nav a[data-target]');
-  var sections = Array.prototype.map.call(navLinks, function (a) {
-    return document.getElementById(a.getAttribute('data-target'));
-  }).filter(Boolean);
-
-  function setCurrent(id) {
-    navLinks.forEach(function (a) {
-      a.classList.toggle('current', a.getAttribute('data-target') === id);
-    });
-  }
-
-  if ('IntersectionObserver' in window) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          setCurrent(entry.target.id);
-        }
-      });
-    }, {
-      rootMargin: '-20% 0px -70% 0px',
-      threshold: 0
-    });
-    sections.forEach(function (s) { observer.observe(s); });
-  }
-
-  navLinks.forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      var id = a.getAttribute('data-target');
-      var target = document.getElementById(id);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setCurrent(id);
-        history.replaceState(null, '', '#' + id);
-      }
-    });
-  });
-
-  if (sections.length) setCurrent(sections[0].id);
-})();
-</script>
-
+</div>
 </body>
 </html>
