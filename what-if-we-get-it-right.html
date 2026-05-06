@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>What If We Get It Right — A research and action agenda on AI displacement and the unfinished sustainable economy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --color-bg: #f8f6f1;
+    --color-surface: #ffffff;
+    --color-accent: #1a6b5c;
+    --color-accent-light: #2a9d8a;
+    --color-text: #1c1c1a;
+    --color-text-muted: #6b7280;
+    --color-faint: #9ca3af;
+    --color-rule: rgba(0,0,0,0.07);
+    --color-rule-s: rgba(0,0,0,0.14);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Barlow', system-ui, sans-serif;
+    font-weight: 300;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .doc {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 64px 56px 80px;
+  }
+
+  .doc-header {
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 28px;
+    margin-bottom: 44px;
+  }
+  .doc-kicker {
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 12px;
+  }
+  .doc-title {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    line-height: 1.18;
+    margin: 0 0 10px;
+    letter-spacing: -0.005em;
+  }
+  .doc-subtitle {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+    font-weight: 400;
+    margin-bottom: 22px;
+  }
+  .doc-meta {
+    display: flex;
+    gap: 28px;
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .doc-meta span strong { color: var(--color-text); font-weight: 600; }
+
+  section { margin-bottom: 38px; }
+  .sec-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 6px;
+  }
+  .sec-head {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    letter-spacing: -0.005em;
+  }
+
+  p { margin: 0 0 14px; }
+
+  .governing {
+    background: var(--color-surface);
+    border: 1px solid var(--color-rule-s);
+    border-left: 3px solid var(--color-accent);
+    padding: 22px 26px;
+    margin: 0 0 44px;
+  }
+  .governing .label {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 8px;
+  }
+  .governing p {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .track {
+    border-top: 1px solid var(--color-rule);
+    padding-top: 18px;
+    margin-bottom: 22px;
+  }
+  .track-tag {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 4px;
+  }
+  .track-title {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    margin: 0 0 10px;
+  }
+  .track-mech {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+    border-top: 1px solid var(--color-rule);
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+  .track-mech strong {
+    font-style: normal;
+    color: var(--color-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .shape {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 16px;
+    border-top: 1px solid var(--color-rule);
+    padding-top: 18px;
+    margin-bottom: 8px;
+  }
+  .shape-num {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.15rem;
+    color: var(--color-accent);
+    line-height: 1.4;
+  }
+  .shape-body { padding-bottom: 10px; }
+  .shape-title {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+  }
+  .shape-meta {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .assets { counter-reset: asset; }
+  .asset {
+    border-top: 1px solid var(--color-rule);
+    padding: 16px 0 4px 36px;
+    position: relative;
+    counter-increment: asset;
+  }
+  .asset::before {
+    content: counter(asset, decimal);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1rem;
+    color: var(--color-accent);
+    font-weight: 400;
+  }
+  .asset-title {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+
+  .precedent {
+    border-top: 1px solid var(--color-rule);
+    padding-top: 12px;
+    margin-bottom: 14px;
+  }
+  .precedent-name {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+
+  em.refs {
+    font-style: normal;
+    color: var(--color-text-muted);
+    font-size: 0.82rem;
+  }
+
+  .doc-footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-rule-s);
+    font-size: 0.7rem;
+    color: var(--color-faint);
+    display: flex;
+    justify-content: space-between;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  strong { font-weight: 600; }
+
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(26, 107, 92, 0.35);
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  a:hover {
+    color: var(--color-accent-light);
+    border-bottom-color: var(--color-accent-light);
+  }
+
+  /* Back link */
+  .back-link {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    display: inline-block;
+    margin: 28px 0 0 56px;
+    border-bottom: none;
+    transition: color 0.15s ease;
+  }
+  .back-link:hover { color: var(--color-accent); }
+  .back-link .arrow {
+    margin-right: 6px;
+    transition: transform 0.2s ease;
+    display: inline-block;
+  }
+  .back-link:hover .arrow { transform: translateX(-3px); }
+
+  @media print {
+    @page { size: A4 portrait; margin: 1.6cm 1.4cm; }
+    body { background: white; font-size: 9.5pt; }
+    .doc { padding: 0; max-width: none; }
+    .doc-title { font-size: 22pt; }
+    .sec-head { font-size: 13pt; }
+    section { break-inside: avoid-page; }
+    .governing, .track, .shape, .precedent, .asset { break-inside: avoid; }
+    .back-link { display: none; }
+  }
+</style>
+</head>
+<body>
+<a class="back-link" href="index.html"><span class="arrow">&larr;</span>Rumination</a>
+<div class="doc" id="content-concept">
+
+      <header class="doc-header">
+        <div class="doc-kicker">Concept Note</div>
+        <h1 class="doc-title">What If We Get It Right</h1>
+        <div class="doc-subtitle">A research and action agenda on AI displacement and the unfinished sustainable economy</div>
+        <div class="doc-meta">
+          <span><strong>Systemiq</strong></span>
+          <span>May 2026</span>
+        </div>
+      </header>
+
+      <div class="governing">
+        <div class="label">Governing thought</div>
+        <p>The transition to a green economy is slower than hoped. The AI disruptions could serve as the best moment in a generation to connect them.</p>
+      </div>
+
+      <section>
+        <div class="sec-label">The problem</div>
+        <h2 class="sec-head">A displaced workforce, an eroding pipeline, and a destination economy that needs to be built</h2>
+        <p>AI displacement is most likely concentrated in knowledge work and administrative roles. Of roughly 37 million workers in the top quartile of AI exposure, approximately 26.5 million have above-median adaptive capacity (<a href="https://www.nber.org/papers/w34705" target="_blank" rel="noopener">Manning and Aguirre, NBER 2026</a>). Many have started to ask the question of how those affected will transition, but there is still much to do on the question of where they will transition to.</p>
+        <p>The disruption is not only hitting mid-career workers. It is eroding the career pathways that have historically enabled upward mobility. <a href="https://www.brookings.edu/articles/how-ai-may-reshape-career-pathways-to-better-jobs/" target="_blank" rel="noopener">Heck, Muro and colleagues (Brookings, April 2026)</a> show that nearly half of gateway-to-destination occupational pathways are now highly AI-exposed, with 11 million workers without four-year degrees concentrated in the most vulnerable gateway roles. New graduates face the same structural problem earlier. The entry-level roles that served as on-ramps are among the most exposed. They are being credentialed for a world that will not exist when they arrive.</p>
+        <p><a href="https://www.brookings.edu/articles/ai-growth-acceleration-versus-distributional-fairness/" target="_blank" rel="noopener">A newer Brookings analysis (May 2026)</a> sharpens the frame. AI diffusion is uneven across sectors, firms, and geographies, and the policy infrastructure to manage its labor market consequences is years behind the technology. Treating diffusion as an automatic downstream effect of technical innovation, rather than a policy challenge in its own right, is the governance error that is being made.</p>
+        <p>The work a sustainable future needs is real and growing. It does not yet exist as a robust labor market. Climate-driven demand for resilience work, ecological restoration, and locally embedded economies is generating real need. The infrastructure to make that work remunerative and replicable at scale does not exist. This is not a claim that the green economy can absorb AI displacement. The scale of AI disruption will likely dwarf any single sector, as the impact is wide.</p>
+        <p>We are positing that there is a destination economy that needs to be built, there is a displaced workforce with transferable capacity, and no one has yet built the path between them.</p>
+      </section>
+
+      <section>
+        <div class="sec-label">The honest counterweight</div>
+        <h2 class="sec-head">AI is also creating new roles, but not where the displacement is most acute</h2>
+        <p>Recent analyses from <a href="https://www.bcg.com/publications/2026/ai-will-reshape-more-jobs-than-it-replaces" target="_blank" rel="noopener">BCG (2026)</a>, the <a href="https://www.imf.org/-/media/files/publications/sdn/2026/english/sdnea2026001.pdf" target="_blank" rel="noopener">IMF Staff Discussion Note (2026)</a> on new jobs creation in the AI age, and the <a href="https://www.oecd.org/en/topics/ai-and-work.html" target="_blank" rel="noopener">OECD's ongoing work on AI and the labor market</a> all argue that AI is creating demand for new skills and new occupations, not just eliminating existing ones. That is real, and any honest framing has to hold it.</p>
+        <p>Two things follow. First, the new roles are concentrated where workers are already credentialed: cloud platforms, data tooling, AI-adjacent IT and product work. The same digitally mature settings where AI adoption is happening fastest. They are not, on their own, a destination for the gateway-pathway disruption Brookings has documented.</p>
+        <p>Second, the existence of new role creation does not change the destination problem. Some displaced workers will find homes in AI-augmented adjacencies. Many will not. And even where they do, the question of what economy those new roles are building remains open. The narrower question this agenda addresses is not whether jobs come back, but whether they come back in directions that build the sustainable economy, or that further entrench the one we have.</p>
+      </section>
+
+      <section>
+        <div class="sec-label">A starting point, with caveats</div>
+        <h2 class="sec-head">The Jobs and Skills for the New Economy flagship is the right scaffold, on three conditions</h2>
+        <p>The <a href="https://www.wri.org/research/jobs-skills-new-economy-action-agenda" target="_blank" rel="noopener">Jobs and Skills for the New Economy flagship report</a>, led by Systemiq and WRI and launched at COP30, projects roughly 375 million new jobs from the climate transition over the next decade in renewable energy, construction, and nature-based solutions, plus another 280 million from adaptation infrastructure. It sets out the analytical scaffold for jobs, skills, and social protection in the emerging new economy. It is the right starting point. On its own it is not sufficient. Three things have to be acknowledged.</p>
+        <p><strong>One. The pace of the green transition is slower than the modeled scenarios assume.</strong> Capital has not flowed at the rate the projections require. Permitting, deployment, and political economy are dragging the path. The 375 million number is a ceiling under conditions that are not currently being met.</p>
+        <p><strong>Two. The green transition as currently defined does not capture the full landscape of work we will actually need.</strong> Place-based resilience, ecological restoration, watershed stewardship, community-level adaptation labor: most of this sits outside the conventional “green job” categories, which remain oriented toward renewable energy and clean tech construction. The restorative economy is not yet a category in the labor data. The flagship report points toward it. The framing has not caught up.</p>
+        <p><strong>Three. The scale of AI disruption dwarfs the green transition jobs picture, even at full ambition.</strong> The destination question is not whether the green economy can absorb the displaced AI-exposed workforce. It cannot. The question is whether a broader, more honest definition of the destination economy, one that includes place-based and restorative work, can begin to be built at the right scale.</p>
+        <p>That is the gap this agenda would fill.</p>
+      </section>
+
+      <section>
+        <div class="sec-label">A rare opening</div>
+        <h2 class="sec-head">Four tracks where AI could be part of the answer, not just the driver</h2>
+        <p>The allocation of human labor is in play in a way it rarely is. AI itself could be deployed to connect disrupted workers and emerging graduates to the sustainable economy. Four tracks below. There are likely others. These are starting points.</p>
+
+        <div class="track">
+          <div class="track-tag">Track 1</div>
+          <div class="track-title">AI-assisted transition into sustainability roles</div>
+          <p>Applies to both displaced mid-career workers and new graduates entering an uncertain labor market.</p>
+          <p>Mid-career knowledge workers whose analytical foundations transfer to sustainability-oriented technical roles. AI lowers the domain knowledge barrier where it is highest. A data scientist does not need to start over to become a climate modeler. A project manager does not need a second degree to coordinate ecosystem restoration.</p>
+          <p>New graduates with quantitative, analytical, or technical training could enter sustainability fields if the on-ramps existed. The research infrastructure is in universities. The career pathways from those programs into the sustainability economy do not.</p>
+          <div class="track-mech"><strong>What AI does in this track</strong>Identifies the opportunity set, diagnoses skills transferability, bridges domain knowledge gaps through targeted training and on-the-job support.</div>
+        </div>
+
+        <div class="track">
+          <div class="track-tag">Track 2</div>
+          <div class="track-title">AI-assisted transition into place-based resilience and restoration work</div>
+          <p>Growing demand for community-level work across climate adaptation and ecosystem restoration. The primary constraint is not skills. It is the absence of economic and institutional conditions that make the work viable as a livelihood.</p>
+          <p>Specific hypothesis worth testing. Geographies with high concentrations of AI-exposed administrative and outsourcing work that also face acute physical climate risk may represent the highest-urgency opportunity to redirect labor toward locally needed resilience roles. Particularly in parts of Southeast Asia, but not only there. The geographic mapping of where these two risks overlap has not been done.</p>
+          <p>The European Just Transition Fund's coal region programs in Silesia, Lausitz, and the Czech Republic demonstrate that geographically specific, demand-anchored transition programs can move workers into ecological and resilience roles. The design logic applies. The US institutional mechanism does not yet exist for AI-displaced service workers.</p>
+          <div class="track-mech"><strong>What AI does in this track</strong>Identifies geographic overlaps between displacement concentration and climate vulnerability, maps from-to pathways for affected populations, supports design of locally appropriate transition programs.</div>
+        </div>
+
+        <div class="track">
+          <div class="track-tag">Track 3</div>
+          <div class="track-title">AI-assisted design of the nature-positive economy we want, not just the one we are reacting to</div>
+          <p>Tracks 1 and 2 are responses to displacement. This track asks the bigger question. What would a better future actually look like, and how do we get there? AI deployed not to solve today's transition problems, but to help imagine and design what a nature-positive, restorative economy could be. What kinds of work it would create, what institutional conditions it would need, what it looks like at community, regional, and national scale.</p>
+          <p>No direct precedent at scale exists. The closest analogues are Future Earth systems modeling, IPCC Working Group III integrated assessment work, IIASA energy transitions modeling. None apply to the specific problem of mapping a nature-positive labor market from the ground up. This is the track to build, not adapt. It is also the most consequential.</p>
+          <div class="track-mech"><strong>What AI does in this track</strong>Scenario modeling at scale and speed previously not possible, mapping interdependencies across ecological and economic systems, helping communities and policymakers see futures they could not otherwise visualize.</div>
+        </div>
+
+        <div class="track">
+          <div class="track-tag">Track 4</div>
+          <div class="track-title">Reshaping the pathways to work from the education journey</div>
+          <p>The disruption is coming for the pipeline itself. The education system, from pre-K through college, is training people for an economy being rewritten in real time.</p>
+          <p>If AI is going to restructure the education journey anyway, the question is whether that disruption is used deliberately. To embed sustainability literacy, ecological thinking, and the skills the future economy will actually need, earlier and more deeply than the current system allows.</p>
+          <div class="track-mech"><strong>What AI does in this track</strong>Personalized learning pathways integrating sustainability content across subjects, tools that help educators and curriculum designers understand what the labor market will look like when today's students enter it, platforms that connect students to the emerging economy while they are still in school.</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-label">Precedents</div>
+        <h2 class="sec-head">What moving people into new work actually requires, a few examples</h2>
+
+        <div class="precedent">
+          <div class="precedent-name">Markle's Rework America</div>
+          <p>A cross-sector coalition of employers, educators, workforce boards, and policymakers. Demonstrated that coordinated, demand-led design moves workers; siloed training programs do not. The limit: it assumed a known destination with employers waiting.</p>
+        </div>
+
+        <div class="precedent">
+          <div class="precedent-name">IKEA</div>
+          <p>8,500 call center workers retrained as interior design consultants as AI handled 47% of queries. Within one company, not across a system. The design logic is instructive. The destination was relationship-intensive, the employer held workers through the transition, and AI freed capacity rather than eliminating it.</p>
+        </div>
+
+        <div class="precedent">
+          <div class="precedent-name">European Just Transition Fund</div>
+          <p>Silesian coal workers transitioned into renewable installation and ecological restoration roles via geographically specific, demand-anchored programs. The design logic for place-based transition is proven. The application to AI-displaced service workers is new.</p>
+        </div>
+
+        <p style="margin-top:18px">The coordination model is known. What is missing is applying it to a destination that is still being built, using AI as a tool within the transition, not just as the force driving it.</p>
+      </section>
+
+      <section>
+        <div class="sec-label">The destination in fragments</div>
+        <h2 class="sec-head">Some parts of the economy are already being built, but at a much smaller scale</h2>
+        <p><strong>Terraformation.</strong> A tech founder who crossed into ecological restoration and is explicitly building a field, not a company. Wants the model replicated, not defended. Execution capacity is the named bottleneck.</p>
+        <p><strong>Edible Schoolyard.</strong> 6,200 programs worldwide, real ecological and community value. Educators not compensated in ways that make it a stable career at scale. The demand exists. The accounting has not caught up.</p>
+        <p><strong>Oyster farming networks, community energy stewardship, watershed programs.</strong> Place-based, ecologically restorative, economically nascent.</p>
+        <p>What these have in common: the work is real, the people doing it are proving it works, and the institutional infrastructure to make it remunerative and replicable is not yet built. These are not pilot curiosities. They are the leading edge of an economy that needs to exist at a fundamentally different scale, and the question is whether anyone is going to build the conditions for that to happen.</p>
+      </section>
+
+      <section>
+        <div class="sec-label">What this requires</div>
+        <h2 class="sec-head">Four functions that do not currently sit in the same room</h2>
+        <p>No AI lab, no government, and no single research institution can solve the displacement-to-destination problem alone. The work requires coordination across four functions, and no institution today holds all of them.</p>
+
+        <div class="precedent">
+          <div class="precedent-name">Displacement mapping</div>
+          <p>Observed data on where AI displacement is concentrated, by occupation, geography, and adaptive capacity. The most rigorous data sits inside the leading AI labs, and needs to be overlaid with external socioeconomic data.</p>
+        </div>
+
+        <div class="precedent">
+          <div class="precedent-name">Destination creation and mapping</div>
+          <p>Where those workers could actually go. Roles, pathways, domain gaps, institutional conditions for the destination work to be remunerative. This is part design, part market infrastructure building. It is a gap the sustainable economy community is positioned to fill, and the layer current AI exposure analyses do not address.</p>
+        </div>
+
+        <div class="precedent">
+          <div class="precedent-name">Technology</div>
+          <p>AI tools for career transition diagnosis, domain-bridging, and scenario modeling. The same technology driving the displacement is the technology that could power the transition, if anyone builds it that way.</p>
+        </div>
+
+        <div class="precedent">
+          <div class="precedent-name">Coordination infrastructure</div>
+          <p>The convening and piloting capacity to move from research to practice. The displacement-side policy community and the destination-side sustainable economy community have never been in the same room.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-label">Why Systemiq as a thought partner</div>
+        <h2 class="sec-head">Three assets the research side alone cannot provide</h2>
+
+        <p><a href="https://www.systemiq.earth/" target="_blank" rel="noopener">Systemiq</a> is a B Corp working on systems change to tackle the climate and nature crisis.</p>
+
+        <div class="assets">
+          <div class="asset">
+            <div class="asset-title">The Jobs and Skills for the New Economy framework</div>
+            <p>Applied across multiple countries, the framework is the tested starting point for the people-centered transition that is missing on the AI side. It is the analytical bridge from displacement to destination.</p>
+          </div>
+
+          <div class="asset">
+            <div class="asset-title">Active market-shaping work building the destination economy itself</div>
+            <p>Systemiq is not researching the sustainable economy. We are building the infrastructure it needs, across multiple dimensions of market shaping. The work spans financing mechanisms for the transition, new market category creation (carbon removal, nature-based assets), climate risk repricing across capital markets and insurance, corporate transformation, and public sector design. The destination economy is not Systemiq's research subject. It is the work itself, and the basis on which we can credibly say what it takes to make it remunerative.</p>
+          </div>
+
+          <div class="asset">
+            <div class="asset-title">Live convening infrastructure</div>
+            <p>20+ partner organizations across the sustainable economy, active country relationships, and the COP30 platform. The displacement-side and destination-side policy communities have never been in the same room. Systemiq has the relationships to build that table.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-label">Research and action agenda</div>
+        <h2 class="sec-head">Four shapes, not mutually exclusive</h2>
+
+        <div class="shape">
+          <div class="shape-num">1</div>
+          <div class="shape-body">
+            <div class="shape-title">Research</div>
+            <p>Test the AI-assisted reskilling hypothesis. Build the destination-side map alongside the displacement geography. Can an LLM bridge the domain knowledge gap for a data analyst moving into climate modeling, or a project manager moving into ecosystem restoration coordination? Build the geographic overlap analysis between AI displacement concentration and climate vulnerability. Neither question has been answered. The <a href="https://www.nber.org/papers/w34705" target="_blank" rel="noopener">Manning and Aguirre</a> adaptive capacity finding gives us the starting population. The <a href="https://www.brookings.edu/articles/how-ai-may-reshape-career-pathways-to-better-jobs/" target="_blank" rel="noopener">Brookings gateway-pathway analysis</a> gives us the on-ramp structure. What is missing is the destination-side map.</p>
+          </div>
+        </div>
+
+        <div class="shape">
+          <div class="shape-num">2</div>
+          <div class="shape-body">
+            <div class="shape-title">Convening</div>
+            <p>Build the table that does not exist. Bring the displacement-side research and policy community together with the destination-side sustainable economy community: the organizations building the fragments of the destination economy, not just the people studying the displacement. A joint convening series anchored to an existing policy venue, with a clear research output.</p>
+          </div>
+        </div>
+
+        <div class="shape">
+          <div class="shape-num">3</div>
+          <div class="shape-body">
+            <div class="shape-title">Piloting</div>
+            <p>A small number of state, university, and employer partnerships that test from-to pathways in practice. ASU Conservation Futures, Doerr, UM Resilience, JHU City Data Alliance as institutional anchors. None was designed for AI-displaced workers, but each has the elements. US as the starting point given the depth of available displacement data.</p>
+          </div>
+        </div>
+
+        <div class="shape">
+          <div class="shape-num">4</div>
+          <div class="shape-body">
+            <div class="shape-title">Tooling</div>
+            <p>Co-develop AI-powered tools for career transition diagnosis and domain-bridging. What does it look like when an LLM helps a displaced worker or recent graduate assess which sustainable economy roles their skills transfer to, and map the gap-closing pathway? The destination-side layer is the dimension current AI exposure analyses do not yet cover.</p>
+          </div>
+        </div>
+
+        <p style="margin-top:24px"><strong>Where to start.</strong> A first conversation to understand where each institution's existing work most directly intersects with this agenda, and whether the natural first move is research, convening, piloting, or tooling. The shapes build on each other; the right one to lead with depends on what the conversation reveals.</p>
+      </section>
+
+      <footer class="doc-footer">
+        <span>Systemiq · What If We Get It Right</span>
+        <span>Concept note · May 2026</span>
+      </footer>
+
+    </div>
+</body>
+</html>
