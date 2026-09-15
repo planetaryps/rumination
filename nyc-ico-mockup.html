@@ -1,8 +1,8 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>NYC ICO Site Mockup</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@600;700&amp;family=Roboto:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap">
 <style>
 :root{
   --green:#508142; --green-deep:#3f6a34; --green-tint:#eef3ec; --green-soft:#c5d8bf;
@@ -13,29 +13,9 @@
   --shadow:0 1px 2px rgba(57,59,60,.06),0 4px 14px rgba(57,59,60,.06);
   color-scheme:light;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --green:#508142; --green-deep:#2f5028; --green-tint:#1b2a1a; --green-soft:#2f4a2c;
-    --teal:#3cb8c8; --navy:#0b2a33; --brand:#e6eae7;
-    --ground:#151a17; --paper:#1d2320; --ink:#e6eae7; --h2:#d6dbd7; --muted:#a6b0aa; --faint:#7c867f; --line:#2e3833; --wash:#1a201d;
-    --trail:#e8703a; --trail-tint:#3a2219; --sun:#F7BE00;
-    --ok:#7fbf6a; --warn:#e2a23a;
-    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 18px rgba(0,0,0,.35);
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-    --green:#508142; --green-deep:#2f5028; --green-tint:#1b2a1a; --green-soft:#2f4a2c;
-  --teal:#3cb8c8; --navy:#0b2a33; --brand:#e6eae7;
-  --ground:#151a17; --paper:#1d2320; --ink:#e6eae7; --h2:#d6dbd7; --muted:#a6b0aa; --faint:#7c867f; --line:#2e3833; --wash:#1a201d;
-  --trail:#e8703a; --trail-tint:#3a2219; --sun:#F7BE00;
-  --ok:#7fbf6a; --warn:#e2a23a;
-  --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 18px rgba(0,0,0,.35);
-  color-scheme:dark;
-}
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);font-family:Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
-h1,h2,h3,h4{font-family:Roboto,Helvetica,Arial,sans-serif;font-weight:700;line-height:1.2;text-wrap:balance;margin:0}
+h1,h2,h3,h4{font-family:"Roboto Condensed",Roboto,Helvetica,Arial,sans-serif;font-weight:700;line-height:1.15;text-wrap:balance;margin:0}
 h1{font-size:2rem;font-weight:700}
 h2{font-size:1.5rem;font-weight:700;color:var(--ink);margin-top:2.4rem;margin-bottom:.8rem}
 .content h2.title{font-size:2.1rem;color:var(--teal);margin-top:.3rem;margin-bottom:.9rem}
@@ -72,9 +52,9 @@ a:hover{text-decoration:2px underline var(--teal);text-underline-offset:2px}
 .sc-bar h1{font-size:1.9rem;color:var(--green);line-height:1.05;flex:1 1 260px;min-width:0}
 .sc-bar h1 a{color:var(--green);text-decoration:none}
 .give{margin-left:auto;display:flex;flex:none}
-.give span{background:var(--trail);color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:10px 18px;clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,8px 100%);margin-left:-8px}
-.give span:first-child{margin-left:0;padding-left:22px}
-.give span:last-child{padding-right:22px}
+.give a{background:var(--trail);color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:10px 18px;clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,8px 100%);margin-left:-8px;text-decoration:none}
+.give a:first-child{margin-left:0;padding-left:22px}
+.give a:last-child{padding-right:22px}
 @media (max-width:760px){.sc-bar .rule{display:none}.sc-bar h1{font-size:1.4rem;flex-basis:100%}.give{margin-left:0}}
 .locked{position:relative}
 .locked::after{content:"Locked by template";position:absolute;right:20px;bottom:2px;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);display:none}
@@ -101,12 +81,30 @@ body.notes .locked::after{display:block}
 .rail p{margin-left:auto;margin-right:auto}
 .rail ul{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:8px;font-size:1rem}
 .social{display:flex;justify-content:center;gap:18px;margin-bottom:6px}
-.social span{width:54px;height:54px;border-radius:50%;background:var(--muted);color:#fff;display:grid;place-items:center;font-weight:700;font-size:1.1rem}
+.social span,.social a{width:54px;height:54px;border-radius:50%;background:var(--muted);color:#fff;display:grid;place-items:center;font-weight:700;font-size:1.1rem;text-decoration:none}
 .rail hr{border:0;border-top:3px solid var(--line);width:90%;margin:6px auto}
 .btn{display:inline-block;background:var(--trail);color:#fff;font-weight:700;font-size:1.05rem;padding:10px 26px;clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,9px 100%);text-decoration:none;border:0;font-family:inherit;cursor:pointer}
 .btn:hover{text-decoration:none;filter:brightness(1.08)}
 .btn.ghost{background:var(--navy)}
 .btn.small{padding:6px 12px;font-size:.9rem}
+
+/* Native Hero Image proportions: 1250–1500 px wide at 8:3 */
+.campaign-hero{position:relative;aspect-ratio:8/3;margin:26px auto 0;overflow:hidden;background:#202536;isolation:isolate}
+.campaign-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-3}
+.campaign-scrim{position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(15,18,28,.94) 0%,rgba(15,18,28,.82) 43%,rgba(15,18,28,.12) 72%,rgba(15,18,28,.02) 100%)}
+.campaign-copy{width:min(49%,530px);height:100%;padding:26px 28px;color:#fff;display:flex;flex-direction:column;justify-content:center}
+.campaign-copy .eyebrow{color:var(--sun);font-weight:700}
+.campaign-copy h2{color:#fff;font-size:1.9rem;margin:.25rem 0 .5rem}
+.campaign-copy p{max-width:38ch}
+.campaign-date{font-size:1rem;font-weight:700;margin-bottom:.35rem!important}
+.campaign-actions{display:flex;align-items:center;gap:15px;flex-wrap:wrap;margin:.35rem 0 .65rem}
+.campaign-actions a:not(.btn){color:#fff;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:820px){
+  .campaign-hero{aspect-ratio:auto;min-height:560px;margin-top:18px;padding:0}
+  .campaign-art{height:260px;object-position:center top}
+  .campaign-scrim{background:linear-gradient(180deg,transparent 0 205px,#202536 275px,#202536 100%)}
+  .campaign-copy{width:100%;min-height:560px;justify-content:flex-end;padding:290px 22px 24px}
+}
 
 /* Cards, grids */
 .grid{display:grid;gap:18px}
@@ -117,46 +115,35 @@ body.notes .locked::after{display:block}
 .card h3{margin-bottom:.4rem}
 .card p{margin-bottom:.6rem}
 .card p:last-child{margin-bottom:0}
-.door{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;border-top:4px solid var(--green)}
-.door.warm{border-top-color:var(--trail)}
-.door.sun{border-top-color:var(--sun)}
-.door .go{margin-top:auto;color:var(--green);font-weight:600}
-.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin:1.4rem 0}
-@media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
-.stats div{background:var(--paper);padding:16px 14px}
-.stats b{display:block;font-size:1.6rem;font-weight:700;color:var(--teal);font-variant-numeric:tabular-nums;line-height:1.1}
-.stats span{font-size:.85rem;color:var(--muted)}
+.story-card{display:flex;flex-direction:column;padding:0;overflow:hidden;text-decoration:none;color:inherit}
+.story-card .photo{border-radius:0;aspect-ratio:16/9}
+.story-card .body{display:flex;flex:1;flex-direction:column;padding:18px}
+.story-card .go{margin-top:auto;color:var(--green);font-weight:600}
 .photo{aspect-ratio:4/3;border-radius:5px;display:flex;align-items:flex-end;padding:12px;color:#fff;font-size:.85rem;font-weight:600;text-shadow:0 1px 2px rgba(0,0,0,.5);background:linear-gradient(160deg,#5d8a5f,#2c5a3e 60%,#1b3a2a)}
 .photo.p2{background:linear-gradient(160deg,#8fb3d9,#4a6f95 55%,#233b55)}
 .photo.p3{background:linear-gradient(160deg,#d9b36a,#a1742f 55%,#5a3f16)}
 .photo.p4{background:linear-gradient(160deg,#b9c9d6,#6f8697 55%,#38474f)}
 .photo.wide{aspect-ratio:16/7}
-.video{aspect-ratio:16/9;border-radius:6px;background:linear-gradient(135deg,#243f31,#0f2419);display:grid;place-items:center;color:#fff;position:relative;margin:.4rem 0 1.4rem}
-.video .play{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;color:var(--green-deep);font-size:1.5rem}
-.video .cap{position:absolute;left:16px;bottom:12px;font-size:.85rem;opacity:.85}
+.section-media{display:grid;grid-template-columns:minmax(240px,42%) 1fr;gap:24px;align-items:center;margin:1.5rem 0}
+@media (max-width:760px){.section-media{grid-template-columns:1fr}}
 
-/* Two-column lists */
+/* Native two- and three-column blocks: open columns, no invented cards */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 @media (max-width:760px){.split{grid-template-columns:1fr}}
-.split .card ul{margin:0;padding-left:1.1rem}
-.split .card li{margin-bottom:.35rem}
+.native-columns{gap:28px;margin:1rem 0 1.5rem}
+.native-columns>div{min-width:0}
+.native-columns h3{color:var(--teal)}
+.native-columns ul{margin:.45rem 0 0;padding-left:1.15rem}
+.native-columns li{margin-bottom:.4rem}
+.native-three{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media (max-width:760px){.native-three{grid-template-columns:1fr}}
 
-/* Steps */
-.steps{list-style:none;padding:0;margin:0;counter-reset:s;display:grid;gap:12px}
-.steps li{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px 16px}
-.steps li::before{counter-increment:s;content:counter(s);width:32px;height:32px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-family:Roboto,Helvetica,Arial,sans-serif;font-weight:700}
-.steps li::before{grid-row:1/3}
-.steps li>b,.steps li>p{grid-column:2}
-.steps b{display:block}
-.steps p{margin:2px 0 0;font-size:.95rem;color:var(--muted)}
-
-/* Timeline (sample year) */
-.year{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-left:1px solid var(--line);margin:1rem 0 1.6rem}
-@media (max-width:760px){.year{grid-template-columns:1fr 1fr}}
-.year div{padding:10px 14px;border-right:1px solid var(--line);border-top:3px solid var(--green-soft)}
-.year div:nth-child(2){border-top-color:#8fb3d9}.year div:nth-child(3){border-top-color:var(--green)}.year div:nth-child(4){border-top-color:var(--sun)}
-.year b{font-family:Roboto,Helvetica,Arial,sans-serif;display:block}
-.year span{font-size:.9rem;color:var(--muted)}
+/* Ordered lists are ordinary rich text, not the advocacy-only Action List block */
+.plain-steps{margin:.5rem 0 1.25rem;padding-left:1.7rem}
+.plain-steps li{padding:0 0 .85rem .25rem}
+.plain-steps li::marker{color:var(--teal);font-family:"Roboto Condensed",Roboto,Helvetica,Arial,sans-serif;font-weight:700}
+.plain-steps b{display:block;color:var(--ink)}
+.plain-steps p{margin:.1rem 0 0;color:var(--muted)}
 
 /* FAQ */
 .faq{border-top:1px solid var(--line)}
@@ -165,13 +152,7 @@ body.notes .locked::after{display:block}
 .faq summary::after{content:"+";color:var(--green);font-weight:700}
 .faq details[open] summary::after{content:"\2013"}
 .faq details p{padding-bottom:12px;color:var(--muted)}
-
-/* Chips */
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:3px 11px;font-size:.85rem}
-.chip.b{border-color:var(--green-soft);background:var(--green-tint)}
-.borough{margin:.6rem 0 1rem}
-.borough h4{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-family:Roboto,sans-serif}
+.faq details>ul{padding-bottom:12px}
 
 /* Tables */
 table{border-collapse:collapse;width:100%;font-size:.95rem}
@@ -179,49 +160,12 @@ th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);verti
 th{font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
 .tablewrap{overflow-x:auto;background:var(--paper);border:1px solid var(--line);border-radius:6px}
 
-/* Trip phases (leaders) */
-.phases{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-@media (max-width:760px){.phases{grid-template-columns:1fr}}
-.phase{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px 16px}
-.phase .eyebrow{color:var(--green);margin-bottom:6px}
-.phase ul{margin:0;padding-left:1.05rem;font-size:.93rem}
-.phase li{margin-bottom:.3rem}
-
-/* Destination finder */
-.finder{background:var(--paper);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);overflow:hidden}
-.finder .bar{padding:16px 18px;border-bottom:1px solid var(--line);display:grid;gap:12px;background:var(--wash)}
-.finder input[type=search]{width:100%;font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:5px;background:var(--paper);color:var(--ink)}
-.frow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.frow .lab{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;min-width:64px}
-.fbtn{font:inherit;font-size:.85rem;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
-.fbtn[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
-.fbtn.tog[aria-pressed="true"]{background:var(--trail);border-color:var(--trail)}
-.fmeta{display:flex;justify-content:space-between;align-items:center;padding:10px 18px;font-size:.9rem;color:var(--muted);border-bottom:1px solid var(--line)}
-.fmeta button{font:inherit;font-size:.85rem;background:none;border:0;color:var(--green);cursor:pointer;text-decoration:underline}
-.results{list-style:none;margin:0;padding:0}
-.results li{display:grid;grid-template-columns:minmax(0,1.6fr) 90px 70px 110px 110px 120px;gap:10px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--line);font-size:.93rem}
-.results li:last-child{border-bottom:0}
-.results .hd{background:var(--wash);font-size:.75rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.results .name b{display:block;font-weight:600}
-.results .name span{color:var(--muted);font-size:.85rem}
-.results .num{font-variant-numeric:tabular-nums}
-.lvl{display:inline-block;min-width:26px;text-align:center;border-radius:4px;padding:1px 7px;font-weight:700;font-size:.85rem;color:#fff;background:var(--faint)}
-.lvl.l1,.lvl.l2{background:var(--ok)}.lvl.l3{background:var(--warn)}.lvl.l4,.lvl.l5{background:var(--trail)}
-.tr{color:var(--ok);font-weight:600}.tr.no{color:var(--faint);font-weight:400}
-.led a{font-size:.85rem}
-.led .none{color:var(--faint);font-size:.85rem}
-.empty{padding:28px 18px;color:var(--muted)}
-@media (max-width:820px){
-  .results li{grid-template-columns:1fr 1fr;row-gap:4px}
-  .results .hd{display:none}
-  .results .name{grid-column:1/-1}
-  .results li>*[data-l]::before{content:attr(data-l) " ";color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}
-}
-
 /* Trips grid */
 .trips{display:grid;gap:26px}
 .trip{display:grid;grid-template-columns:200px 1fr;gap:22px;align-items:start}
 @media (max-width:600px){.trip{grid-template-columns:1fr}}
+.trips a.trip{color:inherit;text-decoration:none}
+.trips a.trip:hover h3{text-decoration:2px underline var(--teal);text-underline-offset:3px}
 .trip .photo{aspect-ratio:4/3;border-radius:3px}
 .trip h3{font-size:1.3rem;color:var(--teal)}
 .trip .body .eyebrow{margin:4px 0 6px;font-size:.95rem;letter-spacing:0;text-transform:none;font-weight:400}
@@ -253,20 +197,21 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
 @media (prefers-reduced-motion:no-preference){.content>section.active{animation:fade .25s ease}}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 </style>
+</head><body>
 
 <div class="wm" aria-hidden="true"></div>
 <div class="mock"><div class="wrap">
   <a class="back-link" href="index.html" style="color:#fff;font-weight:700;text-decoration:none;white-space:nowrap">&larr; Rumination</a>
   <strong>Mockup</strong>
-  <span>Proposed structure for sierraclub.org/atlantic/nyc-ico. The tabs here stand in for separate pages on the live site. Photos are placeholders.</span>
-  <div class="tools"><button id="themeToggle" aria-pressed="false">Dark</button><button id="bnToggle" aria-pressed="false">Show build notes</button></div>
+  <span>Constrained draft for sierraclub.org/atlantic/nyc-ico. Editable content maps to a verified Sierra block or ordinary rich text; tabs stand in for separate live pages.</span>
+  <div class="tools"><button id="bnToggle" aria-pressed="false">Show build notes</button></div>
 </div></div>
 
 <header class="sc-bar locked"><div class="wrap">
   <a class="lockup" href="#home" aria-label="Sierra Club Inspiring Connections Outdoors"><span class="mark"></span><span class="word">Sierra<br>Club<small>Inspiring Connections Outdoors</small></span></a>
   <span class="rule"></span>
   <h1><a href="#home">NYC Inspiring Connections Outdoors</a></h1>
-  <div class="give"><span>Join</span><span>Renew</span><span>Donate</span></div>
+  <div class="give"><a href="https://act.sierraclub.org/donate/rc_connect__campaign_designform?id=7013q000002HA7MAAW&amp;formcampaignid=701310000008mUKAAY" target="_blank" rel="noopener">Join</a><a href="https://www.sierraclub.org/renew" target="_blank" rel="noopener">Renew</a><a href="https://act.sierraclub.org/donate/rc_connect__campaign_designform?id=70131000001hPyNAAU&amp;formcampaignid=701310000008lpxAAA" target="_blank" rel="noopener">Donate</a></div>
 </div></header>
 <div class="navbar locked onbar"><div class="wrap">
   <nav class="tabs" role="tablist" aria-label="Site sections">
@@ -279,6 +224,21 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
   </nav>
 </div></div>
 
+<section id="campaignHero" class="campaign-hero wrap" aria-labelledby="campaign-title">
+  <img class="campaign-art" src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191887662%2F900155516603%2F1%2Foriginal.20260825-201327?crop=focalpoint&amp;fit=crop&amp;w=1880&amp;auto=format%2Ccompress&amp;q=75&amp;sharp=10&amp;fp-x=0.5&amp;fp-y=0.5&amp;s=e0944706259c02ebf5550f31a812d1cc" alt="5Point Adventure Film Festival artwork" loading="eager">
+  <div class="campaign-scrim" aria-hidden="true"></div>
+  <div class="campaign-copy">
+    <p class="eyebrow">Annual fundraiser &middot; One night only</p>
+    <h2 id="campaign-title">Adventure on screen. More kids outdoors.</h2>
+    <p class="campaign-date">Thursday, December 10 &middot; 6:00&ndash;10:30 PM</p>
+    <p>SVA Theatre, Chelsea. Adventure short films, a live auction, and a raffle supporting free NYC ICO trips.</p>
+    <div class="campaign-actions">
+      <a class="btn" href="https://www.eventbrite.com/e/5point-adventure-film-festival-2026-tickets-1998671801160" target="_blank" rel="noopener">Get tickets</a>
+    </div>
+    <div class="bn"><b>Verified constraint:</b> the homepage has one Hero Image (1250&ndash;1500 px wide, 8:3), one rich-text overlay, and one CTA. This composition shows that native footprint, but it requires a new 8:3 festival crop; the existing 1880&times;958 Eventbrite artwork is the wrong ratio and did not render in the native hero preview.</div>
+  </div>
+</section>
+
 <main class="wrap page">
 <div class="content">
 
@@ -286,32 +246,29 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
 <section id="home" class="active" role="tabpanel">
   <p class="eyebrow">A Sierra Club program, run entirely by volunteers since 1981</p>
   <h2 class="title">We take New York City kids outdoors.</h2>
-  <p class="lede">NYC ICO partners with public schools and youth agencies to run hikes, camping trips, ice skating, apple picking, and overnights for students who would not otherwise get there. Every trip is free to the school and the family. Certified volunteer leaders plan it, drive it, and bring the gear.</p>
-  <div class="stats">
-    <div><b>1981</b><span>NYC group founded</span></div>
-    <div><b>20+</b><span>partner schools and agencies</span></div>
-    <div><b>~30</b><span>adult certified leaders</span></div>
-    <div><b>4 to 8</b><span>weeks between trips per group</span></div>
-    <div><b>$0</b><span>cost to schools and families</span></div>
-  </div>
-  <div class="bn"><b>Template fit:</b> the intro is a Title and Text section; the stat row is a Bootstrap grid in the body. Both are editor-level changes, no help desk needed.</div>
+  <p class="lede">About thirty certified volunteer leaders work with more than twenty public schools and youth agencies to run hikes, camping trips, ice skating, apple picking, and overnights. Every trip is free to the school and the family&mdash;including transportation, food, and gear.</p>
+  <div class="bn"><b>Review with Sally:</b> this introduction is newly drafted from facts on the current site rather than copied verbatim. Confirm the approximate leader and partner counts and the claim that every trip is free, including transportation, food, and gear.</div>
 
-  <div class="video"><div class="play">&#9654;</div><div class="cap">Three minutes on what we do (currently a Drive link on the About page)</div></div>
-  <div class="bn"><b>Template fit:</b> YouTube iframe embeds are documented as working by other chapters. Move the video from Google Drive to the Sierra Club YouTube channel or ICO's own, then embed.</div>
+  <div class="section-media">
+    <div class="photo wide">NYC ICO trip photograph</div>
+    <div><p class="eyebrow">See the program in action</p><h3>Three minutes on what we do</h3><p>A short introduction to the students, volunteers, and outings that make NYC ICO possible.</p><p><a href="https://drive.google.com/file/d/1eABMU4VjfRwK_YYpwe5ZUIkHXOaIEsZg/view?usp=sharing" target="_blank" rel="noopener">Watch the NYC ICO video &rarr;</a></p></div>
+  </div>
+  <div class="bn"><b>Template fit:</b> native Section block with an uploaded image and rich-text link. The local media picker accepts images, not video, so the video opens on its existing Drive or Vimeo page.</div>
 
   <div class="grid g3" style="margin-top:1.6rem">
-    <a class="card door" href="#schools"><span class="eyebrow">Schools and agencies</span><h3>Bring your students</h3><p>What we provide, what you provide, and what a year of trips looks like.</p><span class="go">For Schools &rarr;</span></a>
-    <a class="card door warm" href="#volunteer"><span class="eyebrow">Volunteers</span><h3>Come on a trip</h3><p>Attend one orientation, then join trips. Lead them once you are certified.</p><span class="go">Volunteer &rarr;</span></a>
-    <a class="card door sun" href="#about"><span class="eyebrow">Supporters</span><h3>Fund a trip</h3><p>We raise our own budget for buses, food, and gear. Your gift goes to NYC ICO directly.</p><span class="go">Donate &rarr;</span></a>
+    <a class="card story-card" href="#schools"><div class="photo">Students setting out on a trail</div><div class="body"><span class="eyebrow">Schools and agencies</span><h3>Bring your students</h3><p>What we provide, what you provide, and what a year of trips looks like.</p><span class="go">For Schools &rarr;</span></div></a>
+    <a class="card story-card" href="#volunteer"><div class="photo p2">Volunteer leaders with a group</div><div class="body"><span class="eyebrow">Volunteers</span><h3>Come on a trip</h3><p>Attend one orientation, then join trips. Lead them once you are certified.</p><span class="go">Volunteer &rarr;</span></div></a>
+    <a class="card story-card" href="#about"><div class="photo p3">Camping gear ready for a trip</div><div class="body"><span class="eyebrow">Supporters</span><h3>Fund a trip</h3><p>We raise our own budget for buses, food, and gear. Your gift goes to NYC ICO directly.</p><span class="go">Donate &rarr;</span></div></a>
   </div>
+  <div class="bn"><b>Verified constraint:</b> native Cards &ndash; Flexible with Rectangle image format. Each card must receive an approved Media image; an image-format card with missing Media fails in the native renderer.</div>
 
   <h2>Latest trips</h2>
   <div class="trips">
-    <article class="trip"><div class="photo p2">Bear Mountain rink</div><div class="body"><h3>MS 126 at Bear Mountain</h3><p class="eyebrow">MS 126 &middot; March 1, 2026</p><p>Carousel ride, lunch, then skating to close the season.</p></div></article>
-    <article class="trip"><div class="photo">Westmoreland Sanctuary</div><div class="body"><h3>Fourth graders at Westmoreland Sanctuary</h3><p class="eyebrow">Samara Community School &middot; March 6, 2026</p><p>A class studying Eastern Woodlands peoples takes the lesson outside.</p></div></article>
-    <article class="trip"><div class="photo p4">Sterling Forest</div><div class="body"><h3>Wagner hikes through Sterling Forest</h3><p class="eyebrow">MS 167 Wagner &middot; May 2026</p><p>Middle schoolers on the Sterling Lake loop.</p></div></article>
+    <a class="trip" href="https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/05/wagner-ms-167-hikes-through-sterling-forest" target="_blank" rel="noopener"><div class="photo p4">Sterling Forest</div><div class="body"><h3>Wagner MS 167 hikes through Sterling Forest</h3><p class="eyebrow">May 22, 2026</p><p>Middle schoolers spend a spring day hiking in Sterling Forest.</p></div></a>
+    <a class="trip" href="https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/05/ms-167-bear-mountain-ice-skating" target="_blank" rel="noopener"><div class="photo p2">Bear Mountain</div><div class="body"><h3>MS 167 at Bear Mountain ice skating</h3><p class="eyebrow">May 22, 2026</p><p>Snow, skating, a hike up the mountain, and a carousel ride.</p></div></a>
+    <a class="trip" href="https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/05/peanut-leap-cascade-loop-palisades-interstate-park-ywls-bronx" target="_blank" rel="noopener"><div class="photo">Palisades</div><div class="body"><h3>Peanut Leap Cascade with TYWLS of the Bronx</h3><p class="eyebrow">May 22, 2026</p><p>Ten students spend the day hiking and exploring the Palisades.</p></div></a>
   </div>
-  <div class="bn"><b>Template fit:</b> this is the existing blog feed block. Cards show a real photo once each post gets a thumbnail, which needs a signed model release for any minor in frame.</div>
+  <div class="bn"><b>Live content:</b> these are published NYC ICO posts with real links. In Sierra, the Local Entity Blogs block generates the list and links automatically; set Sort/Format to <em>blogs (desc with cards)</em>. Each post still needs an approved thumbnail and summary.</div>
 </section>
 
 <!-- ============ FOR SCHOOLS ============ -->
@@ -320,8 +277,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
   <h2 class="title">A season of outdoor trips for your students, at no cost.</h2>
   <p class="lede">NYC ICO works with public schools and community agencies across the five boroughs. We currently partner with more than twenty, from third grade through high school. Here is what the partnership involves, in plain terms.</p>
 
-  <div class="split">
-    <div class="card"><h3>What NYC ICO provides</h3><ul>
+  <div class="split native-columns">
+    <div><h3>What NYC ICO provides</h3><ul>
       <li>One or two certified trip leaders plus assistant leaders for every trip</li>
       <li>Transportation, food, and gear (packs, layers, tents, sleeping bags)</li>
       <li>Insurance coverage through the Sierra Club</li>
@@ -329,7 +286,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
       <li>Access to 150+ trained volunteers who sign up per trip</li>
       <li>Training for a staff member who wants to become a certified leader</li>
     </ul></div>
-    <div class="card"><h3>What your school provides</h3><ul>
+    <div><h3>What your school provides</h3><ul>
       <li>A staff contact who comes on trips and helps with the pre-trip meeting</li>
       <li>Dates cleared with your calendar, roughly every four to eight weeks</li>
       <li>Your own permission process, alongside ICO's form</li>
@@ -338,58 +295,47 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
       <li>A signed Letter of Agreement and a short application, once</li>
     </ul></div>
   </div>
+  <div class="bn"><b>Review with Sally:</b> confirm the 150+ volunteer figure, what costs NYC ICO guarantees, current insurance language, school-bus expectations, and whether staff training is still offered on these terms.</div>
 
   <h2>What a year looks like</h2>
   <p>Trips build on each other. A group that starts with a park walk in the fall is ready for an overnight by June. This is the pattern our longest-running partner, PS 241, has followed with fourth and fifth graders for sixteen years.</p>
-  <div class="year">
-    <div><b>October</b><span>Fall hike, Bear Mountain or Van Cortlandt Park</span></div>
-    <div><b>January</b><span>Ice skating, Central Park or Bear Mountain rink</span></div>
-    <div><b>March</b><span>Nature sanctuary or apple farm, with a lesson tied to class</span></div>
-    <div><b>June</b><span>Overnight camping trip, the year's capstone</span></div>
+  <div class="split native-columns">
+    <div><h3>Fall and winter</h3><ul><li><b>October:</b> Fall hike at Bear Mountain or Van Cortlandt Park</li><li><b>January:</b> Ice skating in Central Park or at Bear Mountain</li></ul></div>
+    <div><h3>Spring and summer</h3><ul><li><b>March:</b> Nature sanctuary or farm, with a lesson tied to class</li><li><b>June:</b> Overnight camping trip, the year&rsquo;s capstone</li></ul></div>
   </div>
+  <div class="bn"><b>Review with Sally:</b> confirm the four-to-eight-week cadence, the sample seasonal progression, and the current length and status of the PS 241 partnership. The existing site&rsquo;s &ldquo;sixteen years&rdquo; wording may be dated.</div>
 
   <h2>Questions schools ask</h2>
   <div class="faq">
     <details><summary>What does it cost?</summary><p>Nothing. ICO covers transportation, food, gear, and permits. We raise our own funds through Sierra Club membership, donations, and events.</p></details>
     <details><summary>Who supervises the students?</summary><p>Certified leaders are Sierra Club members who hold current Wilderness First Aid certification, have completed Outdoor Leadership Training, and are screened through the New York State Central Registry. Your staff member is on the trip too.</p></details>
     <details><summary>What about insurance and liability?</summary><p>Trips run under Sierra Club insurance. Every student needs a signed ICO permission form, available in English and Spanish, in addition to whatever your school requires.</p></details>
-    <details><summary>Which grades?</summary><p>Third grade through twelfth. Trips are matched to the age group: park walks and farms for younger students, hikes and camping for middle and high school.</p></details>
-    <details><summary>How often are trips?</summary><p>Most partner groups go out every four to eight weeks during the school year, with a longer trip in June.</p></details>
-    <details><summary>Do we need a "certified leader"?</summary><p>Each partner is paired with one. If ICO does not have a leader available, we train a member of your staff to become one. The training is free and takes a season.</p></details>
-    <details><summary>How do we get started?</summary><p>Email the Partner Agency Coordinator. We will set up a call, send the Letter of Agreement and application, and match you with a leader.</p></details>
   </div>
 
   <h2>Three steps to a first trip</h2>
-  <ol class="steps">
-    <li><b>Reach out</b><p>Email <a href="mailto:nycico.partners@gmail.com">nycico.partners@gmail.com</a> or use the interest form. Tell us the grade level and how many students.</p></li>
+  <ol class="plain-steps">
+    <li><b>Reach out</b><p>Email <a href="mailto:nycico.partners@gmail.com">nycico.partners@gmail.com</a>. Tell us the grade level and how many students.</p></li>
     <li><b>Sign the agreement</b><p>A New Agency Letter of Agreement and a short application. Once, not per trip.</p></li>
     <li><b>Meet your leader</b><p>We match you with a certified leader, or train one of your staff, and pick a date for the first outing.</p></li>
   </ol>
-  <p style="margin-top:1rem"><a class="btn" href="#">Partner interest form</a> &nbsp; <a class="btn ghost" href="#">Download a one-page flier for your principal</a></p>
-  <div class="bn"><b>Template fit:</b> new SC Entity page. The two-column list and the year strip are Bootstrap grid rows in the body. The FAQ works as plain headings and paragraphs if collapsible sections get stripped. The interest form is a Google Form: link out for certain, embed only if an iframe test survives the sanitizer. The flier is a PDF uploaded to the media library.</div>
-
-  <h2>Current partners</h2>
-  <div class="borough"><h4>Bronx</h4><div class="chips"><span class="chip">AmPark Neighborhood School</span><span class="chip">Claremont International HS</span><span class="chip">MS 302 Luisa Dessus Cruz</span><span class="chip">PAIHS Monroe</span><span class="chip">PS 100 Isaac Clason</span><span class="chip">PS 159</span><span class="chip">Samara Community School</span><span class="chip">TYWLS of the Bronx</span><span class="chip">Catrock Youth Leadership Academy</span><span class="chip">James Baldwin Outdoor Learning Center</span></div></div>
-  <div class="borough"><h4>Manhattan</h4><div class="chips"><span class="chip">PS 241</span><span class="chip">PS/MS 57 James Weldon Johnson</span><span class="chip">MS 126 Manhattan Academy of Technology</span><span class="chip">PS/MS 140</span><span class="chip">MS 167 Robert F. Wagner</span><span class="chip">MS 297</span><span class="chip">Humanities Prep</span><span class="chip">The Door</span><span class="chip">The Heights Urban Empowerment</span></div></div>
-  <div class="borough"><h4>Brooklyn and Queens</h4><div class="chips"><span class="chip">PS 10</span><span class="chip">Bishop Loughlin Memorial HS</span><span class="chip">Flushing International HS</span></div></div>
-  <div class="borough"><h4>Partner organizations</h4><div class="chips"><span class="chip">Sophie Gerson Healthy Youth Program</span><span class="chip">Catrock Ventures</span><span class="chip">Keaton's Kids</span><span class="chip">Kinship Climbing Collective</span><span class="chip">TRUE Mentors (Hudson County, NJ)</span></div></div>
-  <div class="bn"><b>Template fit:</b> replaces the 23 prose blocks on the current Partner Agencies page. Leader contact details move to a leaders-only document rather than public mailto links, which fixes the mismatched addresses on the current page.</div>
+  <p style="margin-top:1rem"><a class="btn" href="mailto:nycico.partners@gmail.com">Ask about becoming a partner</a></p>
+  <div class="bn"><b>Editorial decision:</b> the speculative principal flier and public partner directory have been removed. The current site does not provide a flier, and its long agency page mixes public recruitment copy with private operational contacts. Drive access is needed to review the actual agreement and application before linking either one.</div>
 </section>
 
 <!-- ============ FOR LEADERS ============ -->
 <section id="leaders" role="tabpanel">
   <p class="eyebrow">For certified leaders and assistants</p>
   <h2 class="title">Everything for planning and running a trip, in one place.</h2>
-  <p class="lede">The ten-step process, the forms, the timeline, and a destination finder. If you are new to leading, start with the timeline and shadow two trips.</p>
+  <p class="lede">Four planning phases, the essential forms, and a link to the destination finder. If you are new to leading, start with the timeline and shadow two trips.</p>
 
   <h2>Trip timeline</h2>
-  <div class="phases">
-    <div class="phase"><div class="eyebrow">6 to 8 weeks out</div><ul><li>Pick a destination and clear the date with the agency</li><li>Get Chair approval</li><li>Post the trip on Meetup so volunteers can RSVP</li><li>Reserve the van or confirm school buses</li></ul></div>
-    <div class="phase"><div class="eyebrow">2 to 4 weeks out</div><ul><li>Scout the route, order trail maps</li><li>File permits or concessionaire forms</li><li>Write the safety plan</li><li>Send the flier and permission forms to the agency</li></ul></div>
-    <div class="phase"><div class="eyebrow">Week of</div><ul><li>Pre-trip meeting with students and staff</li><li>Confirm headcount, drivers, medications</li><li>Plan snacks and meals, pull gear</li><li>Print maps, directions, and the trailhead talk</li></ul></div>
-    <div class="phase"><div class="eyebrow">Trip day and after</div><ul><li>Collect permission forms, adult waivers, Code of Ethics</li><li>Lead and sweep, regular headcounts, closing circle</li><li>Thank volunteers, ask for photos</li><li>Log the trip in Campfire, file expenses, return gear</li></ul></div>
+  <div class="faq">
+    <details open><summary>6 to 8 weeks out</summary><ul><li>Pick a destination and clear the date with the agency</li><li>Get Chair approval</li><li>Post the trip on Meetup so volunteers can RSVP</li><li>Reserve the van or confirm school buses</li></ul></details>
+    <details><summary>2 to 4 weeks out</summary><ul><li>Scout the route and order trail maps</li><li>File permits or concessionaire forms</li><li>Write the safety plan</li><li>Send the flier and permission forms to the agency</li></ul></details>
+    <details><summary>Week of the trip</summary><ul><li>Hold the pre-trip meeting with students and staff</li><li>Confirm headcount, drivers, and medications</li><li>Plan snacks and meals and pull gear</li><li>Print maps, directions, and the trailhead talk</li></ul></details>
+    <details><summary>Trip day and after</summary><ul><li>Collect permission forms, adult waivers, and the Code of Ethics</li><li>Lead and sweep, take regular headcounts, and hold a closing circle</li><li>Thank volunteers and ask for photos</li><li>Log the trip in Campfire, file expenses, and return gear</li></ul></details>
   </div>
-  <div class="bn"><b>Template fit:</b> four Bootstrap columns in the body. The full ten steps stay on a child page for reference. Dead links to mitchell, clubhouse, and nycico.sierraclub.org are replaced with Campfire links.</div>
+  <div class="bn"><b>Verified constraint:</b> native Accordion. The actual 4 Column Divider makes these lists too narrow, so it is not used here. The full ten steps stay on a child page; dead links to mitchell, clubhouse, and nycico.sierraclub.org are replaced with Campfire links.</div>
 
   <h2>Forms and links</h2>
   <div class="tablewrap"><table>
@@ -405,29 +351,27 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
       <tr><td>Gear storage and return</td><td>Equipment coordinator</td><td>Within a week after</td></tr>
     </tbody>
   </table></div>
+  <div class="bn"><b>Drive dependency:</b> this is an ordinary rich-text table. Access to the chapter Drive is needed to verify the current files, permissions, owners, and share URLs. Private leader documents should stay outside the public site.</div>
 
   <h2>Destination finder</h2>
-  <p>Every destination from the current outing-ideas pages, plus the places we went this past season. Filter by what your group can handle.</p>
-  <div class="finder">
-    <div class="bar">
-      <input type="search" id="q" placeholder="Search by name or place" aria-label="Search destinations">
-      <div class="frow" data-group="type"><span class="lab">Type</span><button class="fbtn" data-v="" aria-pressed="true">Any</button><button class="fbtn" data-v="hike" aria-pressed="false">Hike</button><button class="fbtn" data-v="camp" aria-pressed="false">Camping</button><button class="fbtn" data-v="skate" aria-pressed="false">Skating</button><button class="fbtn" data-v="nature" aria-pressed="false">Nature</button><button class="fbtn" data-v="other" aria-pressed="false">Other</button></div>
-      <div class="frow" data-group="level"><span class="lab">Level</span><button class="fbtn" data-v="" aria-pressed="true">Any</button><button class="fbtn" data-v="easy" aria-pressed="false">1 to 2 easy</button><button class="fbtn" data-v="mod" aria-pressed="false">3 moderate</button><button class="fbtn" data-v="hard" aria-pressed="false">4 to 5 hard</button></div>
-      <div class="frow" data-group="age"><span class="lab">Ages</span><button class="fbtn" data-v="" aria-pressed="true">Any</button><button class="fbtn" data-v="E" aria-pressed="false">Elementary</button><button class="fbtn" data-v="M" aria-pressed="false">Middle school</button><button class="fbtn" data-v="H" aria-pressed="false">High school</button></div>
-      <div class="frow" data-group="season"><span class="lab">Season</span><button class="fbtn" data-v="" aria-pressed="true">Any</button><button class="fbtn" data-v="sp" aria-pressed="false">Spring</button><button class="fbtn" data-v="su" aria-pressed="false">Summer</button><button class="fbtn" data-v="fa" aria-pressed="false">Fall</button><button class="fbtn" data-v="wi" aria-pressed="false">Winter</button></div>
-      <div class="frow"><span class="lab">Only</span><button class="fbtn tog" id="fTransit" aria-pressed="false">Subway or train</button><button class="fbtn tog" id="fNoRes" aria-pressed="false">No reservation</button><button class="fbtn tog" id="fLed" aria-pressed="false">Led this past season</button></div>
-    </div>
-    <div class="fmeta"><span id="count"></span><button id="reset">Clear filters</button></div>
-    <ul class="results" id="results"></ul>
+  <p>The Sierra editor cannot run the filtering interface. This page launches the companion tool and keeps a short, readable set of ideas on Sierra Club.</p>
+  <div class="card story-card">
+    <div class="body"><p class="eyebrow">Proposed companion tool</p><h3>Find an outing by season, age, difficulty, transit, and reservation needs</h3><p>The finder can be hosted publicly on GitHub Pages, with a Google Sheet as the editable source for leaders.</p><span class="muted small">Link added after the source data and hosting approach are approved.</span></div>
   </div>
-  <div class="bn"><b>Template fit:</b> the filtering cannot run inside the Sierra Club site. On the live page this is a static table sorted by distance. The live finder is one of the downloadable tools in the Drive, or a hosted page linked from here.</div>
+  <h3 style="margin-top:1.4rem">A few quick ideas</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Destination</th><th>Good for</th><th>Travel</th></tr></thead>
+    <tbody><tr><td>Fort Tryon + Inwood Hill</td><td>All ages, any season</td><td>Subway</td></tr><tr><td>Jamaica Bay Wildlife Refuge</td><td>Birding, spring and fall</td><td>Subway</td></tr><tr><td>Westmoreland Sanctuary</td><td>Elementary and middle school</td><td>About 1 hour</td></tr><tr><td>Sterling Forest</td><td>Moderate hike</td><td>About 1 hour</td></tr><tr><td>Mohican Outdoor Center</td><td>Cabin or camping overnight</td><td>About 2 hours</td></tr></tbody>
+  </table></div>
+  <div class="bn"><b>Proposal requiring approval:</b> the small fallback table is viable as ordinary rich text. The filter tool is not built yet; Drive access is needed to audit the source data before publishing it on GitHub Pages. No custom JavaScript or iframe would be placed on Sierra Club.</div>
 
   <h2>Who to ask</h2>
-  <div class="grid g3">
-    <div class="card"><h3>Trip approval</h3><p class="small">Chair, <a href="mailto:sierraclub.nycico@gmail.com">sierraclub.nycico@gmail.com</a></p></div>
-    <div class="card"><h3>Training and certification</h3><p class="small">Training Coordinator, <a href="mailto:training.nycico@gmail.com">training.nycico@gmail.com</a></p></div>
-    <div class="card"><h3>Gear</h3><p class="small">Equipment Coordinator, through the leaders listserv</p></div>
+  <div class="native-three native-columns">
+    <div><h3>Trip approval</h3><p class="small">Chair, <a href="mailto:sierraclub.nycico@gmail.com">sierraclub.nycico@gmail.com</a></p></div>
+    <div><h3>Training and certification</h3><p class="small">Training Coordinator, <a href="mailto:training.nycico@gmail.com">training.nycico@gmail.com</a></p></div>
+    <div><h3>Gear</h3><p class="small">Equipment Coordinator, through the leaders listserv</p></div>
   </div>
+  <div class="bn"><b>Template fit:</b> native 3 Column block with short rich-text entries.</div>
 </section>
 
 <!-- ============ VOLUNTEER ============ -->
@@ -436,7 +380,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
   <h2 class="title">Come on one trip. Most people come back.</h2>
   <p class="lede">You do not need outdoor experience to start. Attend one orientation, and you can join any trip on the calendar. Leaders are trained from within.</p>
 
-  <ol class="steps">
+  <ol class="plain-steps">
     <li><b>Attend a New Volunteer Orientation</b><p>Held quarterly, currently online. Email <a href="mailto:nycico.newvolunteer@gmail.com">nycico.newvolunteer@gmail.com</a> for the next date.</p></li>
     <li><b>Apply and sign the Code of Conduct</b><p>A short application form. The Code of Conduct is signed at orientation.</p></li>
     <li><b>Join the Sierra Club and the Meetup group</b><p>Membership covers you under Sierra Club insurance. Meetup is where every trip is posted, and access opens after orientation.</p></li>
@@ -444,8 +388,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
   </ol>
 
   <h2>Becoming a certified leader</h2>
-  <div class="split">
-    <div class="card"><h3>What it takes</h3><ul>
+  <div class="split native-columns">
+    <div><h3>What it takes</h3><ul>
       <li>Current Sierra Club membership</li>
       <li>Background check (New York State Central Registry)</li>
       <li>Wilderness First Aid certification (ICO offers a course each January)</li>
@@ -453,36 +397,38 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
       <li>Shadow a certified leader on two trips, then lead one provisionally</li>
       <li>Sign-off from the Chair</li>
     </ul></div>
-    <div class="card"><h3>Upcoming</h3><ul>
-      <li><b>New Volunteer Orientation</b>, online, quarterly</li>
-      <li><b>All Volunteer Meeting</b>, online, quarterly</li>
-      <li><b>Wilderness First Aid</b>, two days, next session to be announced</li>
-      <li><b>Outdoor Leadership Training 101</b>, one morning, next session to be announced</li>
-    </ul><p class="small muted" style="margin:.6rem 0 0">Dates pull from the Sierra Club events calendar once entered in Campfire.</p></div>
+    <div><h3>How training works</h3><ul>
+      <li>New Volunteer Orientation and all-volunteer meetings are held quarterly</li>
+      <li>Wilderness First Aid is a two-day course, generally offered in January</li>
+      <li>Outdoor Leadership Training 101 is a one-morning course</li>
+      <li>New leaders shadow two trips before leading provisionally</li>
+    </ul></div>
   </div>
-  <div class="bn"><b>Template fit:</b> merges the volunteer half of Get Involved with the Events page. Dates come from Campfire events automatically, which ends the stale "Nov 9-10, 2024" problem. The lost-email warning in caps comes out.</div>
+  <div class="bn"><b>Review with Sally:</b> the four signup steps are an ordinary rich-text ordered list&mdash;Action List is an advocacy-action feed and cannot build this process. Confirm the membership, background-check, Wilderness First Aid, shadowing, and provisional-lead requirements before publishing.</div>
+
+  <h2>Upcoming orientations and training</h2>
+  <p class="muted"><em>No dates are published yet.</em> Once each orientation or training is created in Campfire, the native Featured Campfire Events block can populate this area automatically.</p>
+  <div class="bn"><b>Content dependency:</b> Featured Campfire Events works only after the chapter creates the events in Campfire. Until then, use this honest empty state rather than leaving old dates on the page.</div>
 
   <h2>Stay in the loop</h2>
-  <p>Trips are posted on <a href="#">Meetup</a>. Announcements go out on the NYC ICO listserv. To subscribe, send an email to LISTSERV@LISTS.SIERRACLUB.ORG with a blank subject and <code>INFO OA-ICO-NYC-FORUM</code> in the body.</p>
+  <p>Trips are posted on <a href="https://www.meetup.com/nycico/" target="_blank" rel="noopener">Meetup</a>. Announcements go out on the NYC ICO listserv. To subscribe, send an email to LISTSERV@LISTS.SIERRACLUB.ORG with a blank subject and <code>INFO OA-ICO-NYC-FORUM</code> in the body.</p>
 </section>
 
 <!-- ============ TRIPS ============ -->
 <section id="trips" role="tabpanel">
   <p class="eyebrow">Trip reports</p>
   <h2 class="title">Where we went this year.</h2>
-  <p class="lede">Short reports from leaders and students after each trip. Seven trips since November.</p>
+  <p class="lede">Recent reports from NYC ICO outings, automatically pulled from the chapter blog.</p>
   <div class="trips">
-    <article class="trip"><div class="photo p4">Sterling Forest</div><div class="body"><h3>Wagner hikes through Sterling Forest</h3><p class="eyebrow">May 2026 &middot; MS 167 Wagner</p></div></article>
-    <article class="trip"><div class="photo p2">Bear Mountain rink</div><div class="body"><h3>Carousel, lunch, and skating at Bear Mountain</h3><p class="eyebrow">March 1, 2026 &middot; MS 126</p></div></article>
-    <article class="trip"><div class="photo">Westmoreland Sanctuary</div><div class="body"><h3>Fourth graders at Westmoreland Sanctuary</h3><p class="eyebrow">March 6, 2026 &middot; Samara Community School</p></div></article>
-    <article class="trip"><div class="photo p2">Bear Mountain rink</div><div class="body"><h3>34 students skate at Bear Mountain</h3><p class="eyebrow">February 28, 2026 &middot; MS 167 Wagner</p></div></article>
-    <article class="trip"><div class="photo p4">Wollman Rink</div><div class="body"><h3>Wollman Rink and a walk through Central Park</h3><p class="eyebrow">February 3, 2026 &middot; PS 503</p></div></article>
-    <article class="trip"><div class="photo p2">Davis Center</div><div class="body"><h3>A family skate at the new Davis Center</h3><p class="eyebrow">January 16, 2026 &middot; Samara Community School</p></div></article>
-    <article class="trip"><div class="photo p4">Prospect Park</div><div class="body"><h3>Rain moved the hike to the Prospect Park rink</h3><p class="eyebrow">December 19, 2025 &middot; The Door Youth Council</p></div></article>
-    <article class="trip"><div class="photo p3">AMC Mohican</div><div class="body"><h3>Cabin weekend at AMC Mohican</h3><p class="eyebrow">November 7 to 9, 2025 &middot; The Heights Urban Empowerment</p></div></article>
-    <article class="trip"><div class="photo">Palisades</div><div class="body"><h3>Peanut Leap Cascade loop, Palisades Interstate Park</h3><p class="eyebrow">2026 &middot; TYWLS of the Bronx</p></div></article>
+    <a class="trip" href="https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/05/wagner-ms-167-hikes-through-sterling-forest" target="_blank" rel="noopener"><div class="photo p4">Sterling Forest</div><div class="body"><h3>Wagner MS 167 hikes through Sterling Forest</h3><p class="eyebrow">May 22, 2026</p><p>Middle schoolers spend a spring day hiking in Sterling Forest.</p></div></a>
+    <a class="trip" href="https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/05/ms-167-bear-mountain-ice-skating" target="_blank" rel="noopener"><div class="photo p2">Bear Mountain</div><div class="body"><h3>MS 167 at Bear Mountain ice skating</h3><p class="eyebrow">May 22, 2026</p><p>Snow, skating, a hike up the mountain, and a carousel ride.</p></div></a>
+    <a class="trip" href="https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/05/peanut-leap-cascade-loop-palisades-interstate-park-ywls-bronx" target="_blank" rel="noopener"><div class="photo">Palisades</div><div class="body"><h3>Peanut Leap Cascade with TYWLS of the Bronx</h3><p class="eyebrow">May 22, 2026</p><p>Ten students spend the day hiking and exploring the Palisades.</p></div></a>
+    <a class="trip" href="https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/01/samara-community-school-ice-skates-davis-center-central-park" target="_blank" rel="noopener"><div class="photo p2">Davis Center</div><div class="body"><h3>Samara Community School ice skates at Davis Center</h3><p class="eyebrow">January 19, 2026</p><p>Fourth graders and their families take to the ice in Central Park.</p></div></a>
+    <a class="trip" href="https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/01/door-youth-council-goes-ice-skating-prospect-park" target="_blank" rel="noopener"><div class="photo p4">Prospect Park</div><div class="body"><h3>The Door Youth Council goes ice skating</h3><p class="eyebrow">January 19, 2026</p><p>Rain changes the plan from a hike to Prospect Park&rsquo;s covered rink.</p></div></a>
+    <a class="trip" href="https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/01/thue-camps-amc-mohican" target="_blank" rel="noopener"><div class="photo p3">AMC Mohican</div><div class="body"><h3>THUE camps at AMC Mohican</h3><p class="eyebrow">January 19, 2026</p><p>A November cabin weekend for youth and adult volunteers.</p></div></a>
   </div>
-  <div class="bn"><b>Template fit:</b> this is the existing blog. The change is a thumbnail on every post and a summary line written for the card, which the blog form already asks for. The 2014 static trip-reports page is retired.</div>
+  <p style="margin-top:1.5rem"><a href="https://www.sierraclub.org/atlantic/nyc-ico/trip-reports-0" target="_blank" rel="noopener">View all trip reports &rarr;</a></p>
+  <div class="bn"><b>Live content:</b> every item above points to a published report. The Local Entity Blogs block should generate this list rather than rebuilding the cards manually. The 2014 static trip-reports page can be retired after its useful content is checked.</div>
 </section>
 
 <!-- ============ ABOUT ============ -->
@@ -522,20 +468,19 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
 
   <h2>Support NYC ICO</h2>
   <p>We are responsible for our own funding. Buses, food, gear, and training are paid for by donations, Sierra Club memberships credited to ICO, and events like the Adventure Film Festival and the Hikeathon.</p>
-  <p><a class="btn" href="#">Donate to NYC ICO</a> &nbsp; <a class="btn ghost" href="#">Join the Sierra Club, first year to ICO</a></p>
-  <div class="bn"><b>Template fit:</b> merges About Us, Who's Who, and the 2020 Diversity letter into one page. The letter is condensed to the commitments that still stand and attributed to the current committee. The COVID page and the "About NYC ICO" index page are retired.</div>
+  <p><a class="btn" href="https://act.sierraclub.org/donate/rc_connect__campaign_designform?id=70131000001hPyNAAU&amp;formcampaignid=701310000008lpxAAA" target="_blank" rel="noopener">Donate to NYC ICO</a> &nbsp; <a class="btn ghost" href="https://act.sierraclub.org/donate/rc_connect__campaign_designform?id=7013q000002HA7MAAW&amp;formcampaignid=701310000008mUKAAY" target="_blank" rel="noopener">Join the Sierra Club, first year to ICO</a></p>
+  <div class="bn"><b>Review with Sally:</b> verify the history, membership and leader counts, leadership names and roles, the Steering Committee status, diversity language, and fundraising claims. Several are dated statements carried forward from the current site. Support can use Salesforce Action blocks plus the locked donation sidebar.</div>
 </section>
 
 </div>
 
 <aside class="rail">
-  <div class="box locked"><div class="social" aria-label="Social links"><span>f</span><span>X</span><span>ig</span><span>m</span></div>
+  <div class="box locked"><div class="social" aria-label="Social links"><a href="https://www.facebook.com/pages/NYC-Inspiring-Connections-Outdoors/184287348530" target="_blank" rel="noopener" aria-label="Facebook">f</a><a href="https://twitter.com/nyc_ico" target="_blank" rel="noopener" aria-label="X">X</a><a href="https://www.instagram.com/nycico" target="_blank" rel="noopener" aria-label="Instagram">ig</a><a href="https://www.meetup.com/nycico/" target="_blank" rel="noopener" aria-label="Meetup">m</a></div>
     <p style="margin:0 0 .8rem">If you are interested in volunteering with NYC ICO, please email us at <a href="mailto:nycico.newvolunteer@gmail.com">nycico.newvolunteer@gmail.com</a></p>
     <p style="margin:0 0 1rem">Join the Sierra Club and have your first year's membership dues go to NYC ICO or make your tax deductible donation to NYC ICO.</p>
-    <p style="margin:0;display:flex;gap:10px;justify-content:center"><a class="btn" href="#">Join</a><a class="btn" href="#">Donate</a></p>
+    <p style="margin:0;display:flex;gap:10px;justify-content:center"><a class="btn" href="https://act.sierraclub.org/donate/rc_connect__campaign_designform?id=7013q000002HA7MAAW&amp;formcampaignid=701310000008mUKAAY" target="_blank" rel="noopener">Join</a><a class="btn" href="https://act.sierraclub.org/donate/rc_connect__campaign_designform?id=70131000001hPyNAAU&amp;formcampaignid=701310000008lpxAAA" target="_blank" rel="noopener">Donate</a></p>
     <div class="bn">Locked sidebar block from the template. It stays as is.</div></div>
   <hr>
-  <div class="box"><h3>Next orientation</h3><p style="margin:0">Online, quarterly. Email <a href="mailto:nycico.newvolunteer@gmail.com">nycico.newvolunteer@gmail.com</a> for the date.</p></div>
   <div class="box"><h3>Get in touch</h3><ul>
     <li><span class="muted">Schools and agencies</span><br><a href="mailto:nycico.partners@gmail.com">nycico.partners@gmail.com</a></li>
     <li><span class="muted">New volunteers</span><br><a href="mailto:nycico.newvolunteer@gmail.com">nycico.newvolunteer@gmail.com</a></li>
@@ -563,25 +508,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
     panels.forEach(function(p){var on=p.id===id;p.classList.toggle('active',on);if(on)found=true;});
     if(!found){show('home');return;}
     tabs.forEach(function(t){t.setAttribute('aria-selected',t.dataset.tab===id?'true':'false');});
+    var campaign=document.getElementById('campaignHero');
+    if(campaign){campaign.hidden=id!=='home';}
     window.scrollTo({top:0,behavior:'auto'});
   }
   tabs.forEach(function(t){t.addEventListener('click',function(){location.hash=t.dataset.tab;});});
   window.addEventListener('hashchange',function(){show(location.hash.replace('#','')||'home');});
   show(location.hash.replace('#','')||'home');
-
-  // Light / dark toggle (mockup convenience; the live site is light only)
-  var root=document.documentElement, tt=document.getElementById('themeToggle');
-  function applyTheme(t){
-    if(t){root.setAttribute('data-theme',t);}
-    var dark=t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);
-    tt.textContent=dark?'Light':'Dark';tt.setAttribute('aria-pressed',dark?'true':'false');
-  }
-  var saved=null;try{saved=localStorage.getItem('ico-theme');}catch(e){}
-  if(saved){applyTheme(saved);}else{applyTheme(root.getAttribute('data-theme')||null);}
-  tt.addEventListener('click',function(){
-    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&window.matchMedia('(prefers-color-scheme: dark)').matches);
-    var next=dark?'light':'dark';applyTheme(next);try{localStorage.setItem('ico-theme',next);}catch(e){}
-  });
 
   // Build notes
   var bt=document.getElementById('bnToggle');
@@ -591,90 +524,6 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
     bt.textContent=on?'Hide build notes':'Show build notes';
   });
 
-  // Destination finder
-  var ALL=['E','M','H'], SEAS=['sp','su','fa','wi'];
-  var D=[
-    {n:'Bear Mountain',a:'Bear Mountain State Park, NY',t:'hike',mi:50,hr:'1 h',lv:3,age:['M','H'],s:SEAS,tr:false,res:false,note:'Major Welch Trail up, Appalachian Trail down. Tower and zoo at the top.'},
-    {n:'Bear Mountain ice rink',a:'Bear Mountain State Park, NY',t:'skate',mi:50,hr:'1 h',lv:1,age:ALL,s:['wi'],tr:false,res:true,led:{l:'MS 126, Mar 2026',u:'https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/05/ms-126-bear-mountain'}},
-    {n:'Doodletown',a:'Bear Mountain State Park, NY',t:'hike',mi:50,hr:'1 h',lv:2,age:['M','H'],s:SEAS,tr:false,res:false,note:'Short and easy. Good for a lousy day, warm up at the Inn after.'},
-    {n:'Hook Mountain',a:'Nyack, NY',t:'hike',mi:30,hr:'45 min',lv:2,age:['M','H'],s:SEAS,tr:false,res:false,note:'Long Path along the Hudson cliffs. Big views, little climbing.'},
-    {n:'Pine Meadow Lake',a:'Harriman State Park, NY',t:'hike',mi:50,hr:'1 h',lv:2,age:['M','H'],s:SEAS,tr:false,res:false,note:'Soak your feet, no swimming. Bus to Tuxedo possible, driving easier.'},
-    {n:'Lemon Squeezer',a:'Harriman State Park, NY',t:'hike',mi:50,hr:'1 h',lv:2,age:['M','H'],s:SEAS,tr:false,res:false,note:'Follow the Appalachian Trail.'},
-    {n:'Almost Vertical Trail',a:'Harriman State Park, NY',t:'hike',mi:50,hr:'1 h',lv:4,age:['M','H'],s:SEAS,tr:true,res:false,note:'From Tuxedo train station. Kakiat and Blue Disc loop.'},
-    {n:'Sterling Forest',a:'Tuxedo, NY',t:'hike',mi:50,hr:'1 h',lv:3,lvr:'2 to 4',age:['M','H'],s:['sp','su','fa'],tr:false,res:false,note:'Sterling Lake loop or fire tower, about 2.5 hours. Hunting season Nov to Mar: call ahead.',led:{l:'MS 167, May 2026',u:'https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/05/wagner-ms-167-hikes-through-sterling-forest'}},
-    {n:'Storm King State Park',a:'Cornwall, NY',t:'hike',mi:80,hr:'1.5 h',lv:3,age:['M','H'],s:SEAS,tr:false,res:false,note:'Howell Trail loop from Stillman Spring. Overlooks early, stream in the middle.'},
-    {n:'Schunemunk Mountain',a:'Orange County, NY',t:'hike',mi:65,hr:'1.5 h',lv:4,age:['M','H'],s:SEAS,tr:false,res:false,note:'Five-mile loop, detour to the Megaliths. Rock is slippery when wet.'},
-    {n:'Breakneck Ridge',a:'Hudson Highlands State Park, NY',t:'hike',mi:90,hr:'2 h',lv:5,age:['H'],s:['su','fa'],tr:true,res:false,note:'Very steep. Do it once before bringing a group. Metro-North stops at the trailhead on weekends.'},
-    {n:'Appalachian Trail at Beacon',a:'Beacon, NY',t:'hike',mi:60,hr:'1.5 h',lv:null,age:['M','H'],s:['sp','su','fa'],tr:true,res:false,note:'Overnight. Metro-North drops you off.'},
-    {n:'Wyanokie High Point',a:'Norvin Green State Forest, NJ',t:'hike',mi:40,hr:'1 h',lv:3,age:['M','H'],s:['su','fa'],tr:false,res:false,note:'Empire State Building visible from the top. Weis Ecology Center nearby.'},
-    {n:'Palisades cliffs',a:'Fort Lee, NJ',t:'hike',mi:0,hr:'subway',lv:null,age:ALL,s:SEAS,tr:true,res:false,note:'Subway to the GW Bridge, walk across, trails along the cliffs.'},
-    {n:'Peanut Leap Cascade loop',a:'Palisades Interstate Park, NJ',t:'hike',mi:15,hr:'30 min',lv:null,age:['M','H'],s:['sp','su','fa'],tr:false,res:false,led:{l:'TYWLS Bronx, 2026',u:'https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/05/peanut-leap-cascade-loop-palisades-interstate-park-ywls-bronx'}},
-    {n:'Fort Tryon and Inwood Hill Park',a:'Upper Manhattan',t:'hike',mi:0,hr:'subway',lv:null,age:ALL,s:SEAS,tr:true,res:false,note:'A train to 190th or 207th. Rock scrambling and Hudson views.'},
-    {n:'Mianus River Gorge',a:'Stamford, CT',t:'nature',mi:45,hr:'1 h',lv:null,age:['M','H'],s:['sp','su','fa'],tr:false,res:true,note:'Old-growth hemlock and a gorge for scrambling. Closed Dec 1 to Mar 31. No picnicking.'},
-    {n:'Jamaica Bay Wildlife Refuge',a:'Broad Channel, Queens',t:'nature',mi:0,hr:'subway',lv:1,age:ALL,s:['sp','fa'],tr:true,res:false,note:'A train to Broad Channel. Best during spring and fall migration.'},
-    {n:'Westmoreland Sanctuary',a:'Mount Kisco, NY',t:'nature',mi:45,hr:'1 h',lv:1,age:['E','M'],s:['sp','su','fa'],tr:false,res:true,led:{l:'Samara 4th grade, Mar 2026',u:'https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/05/samara-community-school-westmoreland-sanctuary'}},
-    {n:'Mohican Outdoor Center',a:'Blairstown, NJ',t:'camp',mi:80,hr:'2 h',lv:4,age:['M','H'],s:['sp','su','fa','wi'],tr:false,res:true,note:'Group site with a roof, cabins, canoes on the pond. Someone in the group must be an AMC member.',led:{l:'THUE, Nov 2025',u:'https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/01/thue-camps-amc-mohican'}},
-    {n:'Fahnestock State Park',a:'Putnam County, NY',t:'camp',mi:80,hr:'2 h',lv:3,age:['M','H'],s:['sp','su','fa'],tr:false,res:true,note:'Four group sites, $1 per person per night, minimum 14. Outhouse, fire pit, water spigot.'},
-    {n:'Wollman Rink',a:'Central Park, Manhattan',t:'skate',mi:0,hr:'subway',lv:1,age:ALL,s:['wi'],tr:true,res:true,led:{l:'PS 503, Feb 2026',u:'https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/05/ps-503-central-park-wollman-rink'}},
-    {n:'Davis Center rink',a:'Central Park, Manhattan',t:'skate',mi:0,hr:'subway',lv:1,age:ALL,s:['wi'],tr:true,res:true,led:{l:'Samara, Jan 2026',u:'https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/01/samara-community-school-ice-skates-davis-center-central-park'}},
-    {n:'Prospect Park rink',a:'Prospect Park, Brooklyn',t:'skate',mi:0,hr:'subway',lv:1,age:ALL,s:['wi'],tr:true,res:true,note:'Covered rink. The rainy-day fallback that worked.',led:{l:'The Door, Dec 2025',u:'https://www.sierraclub.org/atlantic/nyc-ico/blog/2026/01/door-youth-council-goes-ice-skating-prospect-park'}},
-    {n:'Central Park treasure hunt',a:'Central Park, Manhattan',t:'other',mi:0,hr:'subway',lv:2,age:ALL,s:SEAS,tr:true,res:false,note:'Order the map, 15 clues, one compass. Claim the treasure online after.'},
-    {n:'Apple picking',a:'Dr. Davies Farm, Congers or Wilkens Farm, Yorktown Heights, NY',t:'other',mi:40,hr:'1 h',lv:1,age:ALL,s:['fa'],tr:false,res:false,note:'Let them know if you are bringing a big group.'},
-    {n:'Snow tubing',a:'Hidden Valley, Vernon, NJ',t:'other',mi:50,hr:'1 h',lv:2,age:ALL,s:['wi'],tr:false,res:true,note:'Two-hour sessions, group rates. Riders must be at least 42 inches tall.'},
-    {n:'Orienteering',a:'Hudson Valley Orienteering, various',t:'other',mi:null,hr:'varies',lv:2,lvr:'1 to 3',age:['M','H'],s:['sp','fa'],tr:false,res:false,note:'Events most weekends in spring and fall. Map and compass.'},
-    {n:'Edible plants walk with Wildman Steve Brill',a:'City parks',t:'other',mi:0,hr:'subway',lv:1,age:ALL,s:['sp','su','fa'],tr:true,res:true,note:'$10 per person.'}
-  ];
-  var state={type:'',level:'',age:'',season:'',q:'',transit:false,nores:false,led:false};
-  var TYPE={hike:'Hike',camp:'Camping',skate:'Skating',nature:'Nature',other:'Other'};
-  var AGE={E:'Elem',M:'MS',H:'HS'};
-  function ageLabel(a){return a.length===3?'All ages':a.map(function(x){return AGE[x];}).join(', ');}
-  function seasonLabel(s){if(s.length===4)return 'Any';var m={sp:'Spring',su:'Summer',fa:'Fall',wi:'Winter'};return s.map(function(x){return m[x];}).join(', ');}
-  function matches(d){
-    if(state.type&&d.t!==state.type)return false;
-    if(state.level){if(d.lv==null)return false;if(state.level==='easy'&&d.lv>2)return false;if(state.level==='mod'&&d.lv!==3)return false;if(state.level==='hard'&&d.lv<4)return false;}
-    if(state.age&&d.age.indexOf(state.age)<0)return false;
-    if(state.season&&d.s.indexOf(state.season)<0)return false;
-    if(state.transit&&!d.tr)return false;
-    if(state.nores&&d.res)return false;
-    if(state.led&&!d.led)return false;
-    if(state.q){var q=state.q.toLowerCase();if((d.n+' '+d.a+' '+(d.note||'')).toLowerCase().indexOf(q)<0)return false;}
-    return true;
-  }
-  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
-  function render(){
-    var rows=D.filter(matches).sort(function(a,b){return (a.mi==null?999:a.mi)-(b.mi==null?999:b.mi);});
-    var ul=document.getElementById('results');
-    var h='<li class="hd"><span>Destination</span><span>Distance</span><span>Level</span><span>Ages</span><span>Season</span><span>Last led</span></li>';
-    if(!rows.length){h+='<li class="empty">Nothing matches. Loosen a filter.</li>';}
-    rows.forEach(function(d){
-      var dist=d.mi==null?'varies':(d.mi===0?'In the city':'~'+d.mi+' mi \u00b7 '+d.hr);
-      var lvl=d.lv==null?'<span class="lvl">\u2013</span>':'<span class="lvl l'+d.lv+'" title="Level '+d.lv+' of 5">'+(d.lvr||d.lv)+'</span>';
-      var led=d.led?'<a href="'+esc(d.led.u)+'" target="_blank" rel="noopener">'+esc(d.led.l)+'</a>':'<span class="none">\u2013</span>';
-      var flags=[];if(d.tr)flags.push('<span class="tr">Subway or train</span>');if(d.res)flags.push('Reservation');
-      h+='<li><div class="name"><b>'+esc(d.n)+'</b><span>'+esc(d.a)+(d.note?' \u00b7 '+esc(d.note):'')+(flags.length?' \u00b7 '+flags.join(' \u00b7 '):'')+'</span></div>'+
-        '<span class="num" data-l="Distance">'+dist+'</span><span data-l="Level">'+lvl+'</span><span data-l="Ages">'+ageLabel(d.age)+'</span><span data-l="Season">'+seasonLabel(d.s)+'</span><span class="led" data-l="Last led">'+led+'</span></li>';
-    });
-    ul.innerHTML=h;
-    document.getElementById('count').textContent=rows.length+' of '+D.length+' destinations';
-  }
-  document.querySelectorAll('.frow[data-group]').forEach(function(g){
-    g.querySelectorAll('.fbtn').forEach(function(b){b.addEventListener('click',function(){
-      g.querySelectorAll('.fbtn').forEach(function(x){x.setAttribute('aria-pressed','false');});
-      b.setAttribute('aria-pressed','true');state[g.dataset.group]=b.dataset.v;render();
-    });});
-  });
-  [['fTransit','transit'],['fNoRes','nores'],['fLed','led']].forEach(function(p){
-    var b=document.getElementById(p[0]);b.addEventListener('click',function(){state[p[1]]=!state[p[1]];b.setAttribute('aria-pressed',state[p[1]]?'true':'false');render();});
-  });
-  document.getElementById('q').addEventListener('input',function(e){state.q=e.target.value.trim();render();});
-  document.getElementById('reset').addEventListener('click',function(){
-    state={type:'',level:'',age:'',season:'',q:'',transit:false,nores:false,led:false};
-    document.getElementById('q').value='';
-    document.querySelectorAll('.frow[data-group] .fbtn').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.v===''?'true':'false');});
-    document.querySelectorAll('.fbtn.tog').forEach(function(b){b.setAttribute('aria-pressed','false');});
-    render();
-  });
-  render();
 })();
 </script>
 
