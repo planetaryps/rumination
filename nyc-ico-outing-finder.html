@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore sample NYC ICO outing ideas by activity, setting, time commitment, and season.">
+<title>NYC ICO Outing Finder</title>
+<style>
+  :root {
+    --ink: #1f2933;
+    --muted: #526573;
+    --green: #2f6b3c;
+    --green-dark: #214e2c;
+    --teal: #00879a;
+    --cream: #f4f1e7;
+    --paper: #fff;
+    --line: #d8dedb;
+    --soft: #edf4ef;
+    --focus: #ffb000;
+    --shadow: 0 10px 30px rgba(25, 52, 34, .08);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--cream);
+    font: 17px/1.55 Arial, Helvetica, sans-serif;
+  }
+  a { color: var(--green-dark); text-underline-offset: .18em; }
+  a:hover { color: var(--teal); }
+  button, input, select { font: inherit; }
+  button, select { cursor: pointer; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+  .skip {
+    position: absolute;
+    left: -9999px;
+    top: 12px;
+    z-index: 20;
+    padding: 10px 14px;
+    background: var(--paper);
+  }
+  .skip:focus { left: 12px; }
+  .topbar {
+    background: var(--green-dark);
+    color: #fff;
+    border-bottom: 5px solid var(--teal);
+  }
+  .topbar-inner, .hero-inner, main, .footer-inner {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+  .topbar-inner {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    letter-spacing: .01em;
+  }
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(255,255,255,.8);
+    border-radius: 50%;
+    font-size: 12px;
+    letter-spacing: .08em;
+  }
+  .topbar nav { display: flex; gap: 20px; }
+  .topbar nav a { color: #fff; font-size: 14px; font-weight: 700; }
+  .hero {
+    background: linear-gradient(120deg, var(--paper) 0 64%, var(--soft) 64% 100%);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-inner { padding: 62px 0 54px; }
+  .eyebrow {
+    margin: 0 0 10px;
+    color: var(--teal);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  h1, h2, h3 { margin-top: 0; line-height: 1.12; }
+  h1 {
+    max-width: 760px;
+    margin-bottom: 18px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.5rem, 7vw, 5.3rem);
+    font-weight: 700;
+    letter-spacing: -.035em;
+  }
+  .lede {
+    max-width: 760px;
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(1.08rem, 2vw, 1.3rem);
+  }
+  main { padding: 42px 0 72px; }
+  .notice {
+    margin-bottom: 28px;
+    padding: 18px 20px;
+    background: #fff9df;
+    border-left: 5px solid #e5a400;
+  }
+  .notice strong { display: block; margin-bottom: 2px; }
+  .notice p { margin: 0; color: #4f4a37; }
+  .filters {
+    padding: 24px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+  .filter-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .filter-head h2 { margin-bottom: 5px; font-size: 1.5rem; }
+  .filter-head p { margin: 0; color: var(--muted); }
+  .reset {
+    min-width: max-content;
+    padding: 9px 14px;
+    color: var(--green-dark);
+    background: transparent;
+    border: 1px solid var(--green);
+    border-radius: 3px;
+    font-weight: 700;
+  }
+  .reset:hover { color: #fff; background: var(--green); }
+  .filter-grid {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    gap: 14px;
+  }
+  label { display: block; color: var(--muted); font-size: 13px; font-weight: 800; letter-spacing: .03em; }
+  input, select {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 6px;
+    padding: 10px 12px;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid #aebbb5;
+    border-radius: 2px;
+  }
+  .presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .presets span { align-self: center; margin-right: 4px; color: var(--muted); font-size: 13px; font-weight: 800; }
+  .preset {
+    padding: 8px 12px;
+    background: var(--soft);
+    border: 1px solid #b9cbbf;
+    border-radius: 99px;
+    color: var(--green-dark);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .preset:hover { background: #dceade; }
+  .results-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 36px 0 18px;
+  }
+  .results-head h2 { margin: 0; font-size: 1.6rem; }
+  .count { margin: 0; color: var(--muted); }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .card {
+    min-width: 0;
+    padding: 22px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--teal);
+    box-shadow: 0 4px 14px rgba(23, 48, 31, .05);
+  }
+  .card[data-primary="Camping"] { border-top-color: var(--green); }
+  .card[data-primary="Water"] { border-top-color: #247cad; }
+  .card[data-primary="City nature"] { border-top-color: #8c6c3b; }
+  .card h3 { margin-bottom: 10px; font-size: 1.22rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .chip {
+    padding: 4px 8px;
+    color: #355044;
+    background: var(--soft);
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .card-foot {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    color: #65766d;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  .empty {
+    grid-column: 1 / -1;
+    padding: 42px 24px;
+    text-align: center;
+    background: var(--paper);
+    border: 1px dashed #9caea4;
+  }
+  .empty h3 { margin-bottom: 8px; }
+  .empty p { margin: 0 0 18px; color: var(--muted); }
+  .how-to {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 34px;
+    margin-top: 54px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+  .how-to h2 { font-size: 1.65rem; }
+  .how-to p, .how-to li { color: var(--muted); }
+  .how-to ol { padding-left: 22px; }
+  .leader-box { padding: 24px; background: var(--green-dark); color: #fff; }
+  .leader-box h2, .leader-box p { color: #fff; }
+  .leader-box a { color: #fff; font-weight: 800; }
+  footer { color: #dce8df; background: #172d20; }
+  .footer-inner { padding: 30px 0; }
+  footer p { margin: 0; font-size: 13px; }
+  footer p + p { margin-top: 7px; }
+  footer a { color: #fff; }
+  @media (max-width: 900px) {
+    .filter-grid { grid-template-columns: repeat(2, 1fr); }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 620px) {
+    body { font-size: 16px; }
+    .topbar-inner, .hero-inner, main, .footer-inner { width: min(100% - 28px, 1180px); }
+    .topbar-inner { min-height: 64px; }
+    .topbar nav { display: none; }
+    .hero { background: var(--paper); }
+    .hero-inner { padding: 42px 0 38px; }
+    .filter-head, .results-head { align-items: flex-start; flex-direction: column; }
+    .filter-grid, .cards, .how-to { grid-template-columns: 1fr; }
+    .filters { padding: 18px; }
+    .card { padding: 19px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#finder">Skip to outing finder</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://www.sierraclub.org/atlantic/nyc-ico">
+      <span class="brand-mark" aria-hidden="true">ICO</span>
+      <span>NYC Inspiring Connections Outdoors</span>
+    </a>
+    <nav aria-label="Related links">
+      <a href="https://www.sierraclub.org/atlantic/nyc-ico">NYC ICO home</a>
+      <a href="https://www.sierraclub.org/atlantic/nyc-ico/trip-reports-0">Trip reports</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Planning inspiration</p>
+    <h1>Find an outing idea.</h1>
+    <p class="lede">Start with a nearby park, build toward a bigger day out, or imagine an overnight. Filter a curated set of NYC ICO examples by activity, setting, time commitment, and season.</p>
+  </div>
+</section>
+
+<main id="finder">
+  <aside class="notice" aria-label="Planning note">
+    <div>
+      <strong>These are ideas, not current trip plans.</strong>
+      <p>NYC ICO leaders confirm access, permits, transportation, accessibility, weather, and safety requirements before every outing.</p>
+    </div>
+  </aside>
+
+  <section class="filters" aria-labelledby="filter-title">
+    <div class="filter-head">
+      <div>
+        <h2 id="filter-title">What kind of outing?</h2>
+        <p>Choose one filter or combine several.</p>
+      </div>
+      <button class="reset" id="reset" type="button">Clear filters</button>
+    </div>
+
+    <div class="filter-grid">
+      <label>
+        Search
+        <input id="search" type="search" placeholder="Try “park,” “paddle,” or “overnight”" autocomplete="off">
+      </label>
+      <label>
+        Activity
+        <select id="activity">
+          <option value="">All activities</option>
+          <option>Hike</option>
+          <option>Water</option>
+          <option>Camping</option>
+          <option>City nature</option>
+        </select>
+      </label>
+      <label>
+        Setting
+        <select id="setting">
+          <option value="">Any setting</option>
+          <option value="New York City">New York City</option>
+          <option value="Regional">Beyond the city</option>
+          <option value="Varies">Varies by provider</option>
+        </select>
+      </label>
+      <label>
+        Time commitment
+        <select id="commitment">
+          <option value="">Any length</option>
+          <option value="Starter">Starter outing</option>
+          <option value="Half day">Half day</option>
+          <option value="Full day">Full day</option>
+          <option value="Overnight">Overnight</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="presets" aria-label="Suggested filter combinations">
+      <span>Quick starts:</span>
+      <button class="preset" type="button" data-preset="first">First trip in the city</button>
+      <button class="preset" type="button" data-preset="day">A bigger day out</button>
+      <button class="preset" type="button" data-preset="overnight">An overnight</button>
+      <button class="preset" type="button" data-preset="warm">Warm-weather water ideas</button>
+    </div>
+  </section>
+
+  <div class="results-head">
+    <h2>Outing ideas</h2>
+    <p class="count" id="count" role="status" aria-live="polite"></p>
+  </div>
+  <section class="cards" id="cards" aria-label="Filtered outing ideas"></section>
+
+  <section class="how-to">
+    <div>
+      <p class="eyebrow">Build a season</p>
+      <h2>Progress at the group’s pace.</h2>
+      <ol>
+        <li>Begin with a familiar, lower-logistics outdoor experience.</li>
+        <li>Build confidence with a longer walk, hike, or structured activity.</li>
+        <li>Plan a bigger day or overnight once the group and partner are ready.</li>
+      </ol>
+      <p>NYC ICO works with each school or agency to choose experiences that fit its students, staffing, calendar, and goals.</p>
+    </div>
+    <aside class="leader-box">
+      <p class="eyebrow" style="color:#b7e0c0">Current leaders</p>
+      <h2>Use the private planning resources.</h2>
+      <p>This public finder intentionally omits operational details. Current leaders should use the latest forms, procedures, and trip-planning resources in Sierra Club Campfire and the access-controlled NYC ICO Drive.</p>
+      <p><a href="https://campfire.sierraclub.org/campfire/apex/ConstituentHome">Open Campfire →</a></p>
+    </aside>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p><strong>NYC Inspiring Connections Outdoors</strong> · A volunteer-led Sierra Club program.</p>
+    <p>Planning preview prepared for the 2026 website refresh. Destination details remain subject to leader review.</p>
+  </div>
+</footer>
+
+<script>
+const outings = [
+  {name:"Bear Mountain and the Appalachian Trail", activities:["Hike"], setting:"Regional", commitment:"Full day", season:"Year-round", primary:"Hike", description:"A classic larger-day hiking idea for a group ready to travel beyond the city and spend more time on trail."},
+  {name:"Sterling Forest", activities:["Hike"], setting:"Regional", commitment:"Full day", season:"Year-round", primary:"Hike", description:"A regional hiking destination that can support a longer trail day and continued skill-building."},
+  {name:"Inwood Hill and Fort Tryon Parks", activities:["Hike","City nature"], setting:"New York City", commitment:"Starter", season:"Year-round", primary:"City nature", description:"A city-based combination of wooded paths, river views, and a flexible first or early-season outing."},
+  {name:"Palisades Interstate Park", activities:["Hike"], setting:"Regional", commitment:"Full day", season:"Year-round", primary:"Hike", description:"A bigger hiking day with varied route possibilities outside the five boroughs."},
+  {name:"Van Cortlandt Park", activities:["Hike","City nature"], setting:"New York City", commitment:"Starter", season:"Year-round", primary:"City nature", description:"A flexible Bronx park option for an introductory walk, nature exploration, or a first trail day."},
+  {name:"Delaware Water Gap rafting", activities:["Water"], setting:"Regional", commitment:"Full day", season:"Warm weather", primary:"Water", description:"A warm-weather rafting idea for an experienced group working with an appropriate provider."},
+  {name:"SoundWaters and Long Island Sound", activities:["Water"], setting:"Regional", commitment:"Full day", season:"Warm weather", primary:"Water", description:"A structured coastal-water experience that can combine outdoor learning with time on the Sound."},
+  {name:"Seasonal canoeing and kayaking", activities:["Water"], setting:"Varies", commitment:"Full day", season:"Warm weather", primary:"Water", description:"A flexible paddling category for matching a vetted provider and location to the group’s needs."},
+  {name:"Mohican Outdoor Center", activities:["Camping","Hike"], setting:"Regional", commitment:"Overnight", season:"Seasonal", primary:"Camping", description:"An overnight idea for groups ready to extend their time outdoors and share a longer experience."},
+  {name:"Fahnestock State Park", activities:["Camping","Hike"], setting:"Regional", commitment:"Overnight", season:"Seasonal", primary:"Camping", description:"A regional camping and hiking possibility for a group progressing toward an overnight."},
+  {name:"Harriman State Park", activities:["Camping","Hike"], setting:"Regional", commitment:"Overnight", season:"Seasonal", primary:"Camping", description:"A broad regional setting for an overnight or a substantial hiking day, depending on the plan."},
+  {name:"Jamaica Bay Wildlife Refuge", activities:["City nature"], setting:"New York City", commitment:"Half day", season:"Year-round", primary:"City nature", description:"A city nature idea centered on wildlife, habitat, observation, and a different view of New York City."},
+  {name:"Prospect Park", activities:["City nature","Hike"], setting:"New York City", commitment:"Starter", season:"Year-round", primary:"City nature", description:"A familiar and adaptable setting for walking, outdoor learning, skating, or an introductory group outing."},
+  {name:"Governors Island", activities:["City nature"], setting:"New York City", commitment:"Half day", season:"Seasonal", primary:"City nature", description:"A city outing that can combine open space, harbor views, exploration, and environmental learning."},
+  {name:"Randall’s Island", activities:["City nature"], setting:"New York City", commitment:"Half day", season:"Year-round", primary:"City nature", description:"An accessible-in-city concept for park exploration, waterfront time, and environmental programming."},
+  {name:"Central Park and the North Woods", activities:["City nature","Hike"], setting:"New York City", commitment:"Starter", season:"Year-round", primary:"City nature", description:"A flexible starting point for a local walk, trail skills, nature observation, or a seasonal activity."}
+];
+
+const els = {
+  search: document.querySelector('#search'),
+  activity: document.querySelector('#activity'),
+  setting: document.querySelector('#setting'),
+  commitment: document.querySelector('#commitment'),
+  cards: document.querySelector('#cards'),
+  count: document.querySelector('#count'),
+  reset: document.querySelector('#reset')
+};
+
+const esc = value => String(value).replace(/[&<>"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]));
+
+function readState() {
+  return {
+    q: els.search.value.trim().toLowerCase(),
+    activity: els.activity.value,
+    setting: els.setting.value,
+    commitment: els.commitment.value
+  };
+}
+
+function matches(outing, state) {
+  const haystack = [outing.name, outing.description, outing.setting, outing.commitment, outing.season, ...outing.activities].join(' ').toLowerCase();
+  return (!state.q || haystack.includes(state.q)) &&
+    (!state.activity || outing.activities.includes(state.activity)) &&
+    (!state.setting || outing.setting === state.setting) &&
+    (!state.commitment || outing.commitment === state.commitment);
+}
+
+function render() {
+  const state = readState();
+  const results = outings.filter(outing => matches(outing, state));
+  els.count.textContent = `${results.length} of ${outings.length} ideas`;
+  if (!results.length) {
+    els.cards.innerHTML = `<div class="empty"><h3>No exact matches</h3><p>Try removing one filter or searching a broader word.</p><button class="reset" type="button" data-clear>Show all ideas</button></div>`;
+    els.cards.querySelector('[data-clear]').addEventListener('click', reset);
+    syncUrl(state);
+    return;
+  }
+  els.cards.innerHTML = results.map(outing => `
+    <article class="card" data-primary="${esc(outing.primary)}">
+      <div class="chips">
+        ${outing.activities.map(item => `<span class="chip">${esc(item)}</span>`).join('')}
+        <span class="chip">${esc(outing.setting)}</span>
+        <span class="chip">${esc(outing.commitment)}</span>
+        <span class="chip">${esc(outing.season)}</span>
+      </div>
+      <h3>${esc(outing.name)}</h3>
+      <p>${esc(outing.description)}</p>
+      <div class="card-foot">Leaders verify details before each trip</div>
+    </article>`).join('');
+  syncUrl(state);
+}
+
+function syncUrl(state) {
+  const params = new URLSearchParams();
+  if (state.q) params.set('q', state.q);
+  if (state.activity) params.set('activity', state.activity);
+  if (state.setting) params.set('setting', state.setting);
+  if (state.commitment) params.set('commitment', state.commitment);
+  const suffix = params.toString() ? `?${params}` : location.pathname;
+  history.replaceState(null, '', suffix);
+}
+
+function reset() {
+  els.search.value = '';
+  els.activity.value = '';
+  els.setting.value = '';
+  els.commitment.value = '';
+  render();
+  els.search.focus();
+}
+
+function applyPreset(name) {
+  resetValues();
+  if (name === 'first') { els.setting.value = 'New York City'; els.commitment.value = 'Starter'; }
+  if (name === 'day') { els.setting.value = 'Regional'; els.commitment.value = 'Full day'; }
+  if (name === 'overnight') { els.activity.value = 'Camping'; els.commitment.value = 'Overnight'; }
+  if (name === 'warm') { els.activity.value = 'Water'; }
+  render();
+  document.querySelector('.results-head').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function resetValues() {
+  els.search.value = '';
+  els.activity.value = '';
+  els.setting.value = '';
+  els.commitment.value = '';
+}
+
+function restoreFromUrl() {
+  const params = new URLSearchParams(location.search);
+  els.search.value = params.get('q') || '';
+  for (const key of ['activity','setting','commitment']) {
+    const value = params.get(key) || '';
+    if ([...els[key].options].some(option => option.value === value)) els[key].value = value;
+  }
+}
+
+Object.values(els).filter(el => el && (el.matches('input') || el.matches('select'))).forEach(el => el.addEventListener('input', render));
+els.reset.addEventListener('click', reset);
+document.querySelectorAll('[data-preset]').forEach(button => button.addEventListener('click', () => applyPreset(button.dataset.preset)));
+restoreFromUrl();
+render();
+</script>
+</body>
+</html>
